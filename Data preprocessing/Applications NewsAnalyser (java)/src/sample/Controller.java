@@ -59,7 +59,7 @@ public class Controller {
         // Methods to call and typ caste the value. In the first step the give the
         // News from input text field in the specific method to do something.
         // The The result is converted from a number to a string.
-        String sCountOfWord = Integer.toString(getCoundOfWords(sNewsText));
+        String sCountOfWord = Integer.toString(getCountOfWords(sNewsText));
         String sCountOfUpperCase = Integer.toString(getNumberOfUpperCase(sNewsText));
         String sCountOfExclamationMarkCount = Integer.toString(getNumberOfExclamationMark(sNewsText));
         String sCountOFQuestionMarkCount = Integer.toString(getNumberOfQuestionMark(sNewsText));
@@ -84,7 +84,7 @@ public class Controller {
      * @author: Benjamin M. Abdel-Karim
      * @update: 2017-07-12
      */
-    public static int getCoundOfWords(String sText){
+    public static int getCountOfWords(String sText){
         StringTokenizer sStrinkTokenizer= new StringTokenizer(sText);
         return sStrinkTokenizer.countTokens();
     }
@@ -107,10 +107,10 @@ public class Controller {
         return iUpperCase;
     }
 
-    /**
-     * This method count the uppercase in a given string.
+     /**
+     * This method count the Exclamation marks in a given string.
      * @param sText
-     * @return The number of uppercase
+     * @return The number of Exclamation marks
      * @author: Hendrik Joentgen
      * @update: 2017-05-12
      */
@@ -126,9 +126,9 @@ public class Controller {
 
 
     /**
-     * This method count the QuestionMark in a given string.
+     * This method count the Question marks in a given string.
      * @param sText
-     * @return The number of uppercase
+     * @return The number of Question marks
      * @author: Hendrik Joentgen
      * @update: 2017-05-12
      */
@@ -141,5 +141,6 @@ public class Controller {
         }
         return iQuestionMark;
     }
+
 
 }

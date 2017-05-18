@@ -15,6 +15,7 @@ import java.sql.Date;
  */
 public class NewsArticle {
 
+
     /**
      * @param args
      * @throws Exception
@@ -52,7 +53,7 @@ public class NewsArticle {
     }
 
     //Constructor, welcher aus der NewsID ein Newsarticle-Objekt erstellt.
-    NewsArticle(int newsID) throws Exception{
+    public NewsArticle(int newsID) throws Exception{
         Connection con = getConnection();
         PreparedStatement newsStatement = con.prepareStatement("SELECT * FROM newsarticles WHERE newsID=" + newsID);
         ResultSet result = newsStatement.executeQuery();
