@@ -65,7 +65,7 @@ public class Controller {
         // News from input text field in the specific method to do something.
         // The The result is converted from a number to a string.
         String sCountOfWord = Integer.toString(getCountOfWords(sNewsText));
-        String sCountOfUpperCase = Integer.toString(getNumberOfUpperCase(sNewsText));
+        String sCountOfUpperCase = Double.toString(getNumberOfUpperCase(sNewsText));
         String sCountOfExclamationMarkCount = Integer.toString(getNumberOfExclamationMark(sNewsText));
         String sCountOFQuestionMarkCount = Integer.toString(getNumberOfQuestionMark(sNewsText));
         String sCountOfCitations = Integer.toString(getNumberOfCitations(sNewsText));
@@ -98,20 +98,20 @@ public class Controller {
 
 
     /**
-     * This method count the uppercase in a given string.
+     * This method count the share of uppercases in a given string.
      * @param sText
-     * @return The number of uppercase
+     * @return The share of uppercase
      * @author: Hendrik Joentgen
      * @update: 2017-05-12
      */
-    public static int getNumberOfUpperCase(String sText) {
+    public static double getNumberOfUpperCase(String sText) {
         int iUpperCase = 0;
         for (int i = 0; i < sText.length(); i++) {
             if (Character.isUpperCase(sText.charAt(i))) {
                 iUpperCase++;
             }
         }
-        return iUpperCase;
+        return (double)iUpperCase / (double)sText.length();
     }
 
      /**

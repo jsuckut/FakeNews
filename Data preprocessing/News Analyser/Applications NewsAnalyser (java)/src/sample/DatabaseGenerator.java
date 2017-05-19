@@ -24,7 +24,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases int, questions int, exclamations int, authors int, citations int)");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int)");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -34,7 +34,7 @@ public class DatabaseGenerator {
             NewsArticle news = new NewsArticle(resultSet.getInt("newsID"));
             boolean isFake = news.isFake;
             int words = getCountOfWords(news);
-            int uppercases = getNumberOfUpperCase(news);
+            double uppercases = getNumberOfUpperCase(news);
             int questions = getNumberOfQuestionMark(news);
             int exclamations = getNumberOfExclamationMark(news);
             //TODO Ich bekomm die getNumberOfAuthors Methode nicht zu laufen. Gibt mir immer ne NullPointerException raus
@@ -67,13 +67,13 @@ public class DatabaseGenerator {
 
 
     /**
-     * This method count the uppercase in a given string.
+     * This method share of uppercases in a given string.
      * @param news
-     * @return The number of uppercase
+     * @return The share of uppercases
      * @author: Hendrik Joentgen
      * @update: 2017-05-12
      */
-    public static int getNumberOfUpperCase(NewsArticle news) {
+    public static double getNumberOfUpperCase(NewsArticle news) {
         String sText = news.getContent();
         int iUpperCase = 0;
         for (int i = 0; i < sText.length(); i++) {
@@ -81,7 +81,9 @@ public class DatabaseGenerator {
                 iUpperCase++;
             }
         }
-        return iUpperCase;
+        System.out.println(iUpperCase / sText.length());
+        return (double)iUpperCase / (double)sText.length();
+
     }
 
     /**

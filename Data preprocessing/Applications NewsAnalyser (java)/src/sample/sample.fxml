@@ -17,7 +17,7 @@
       <Label layoutX="318.0" layoutY="34.0" prefHeight="27.0" prefWidth="180.0" text="Anzahl der Worte:" />
       <Label fx:id="labelWortCount" layoutX="543.0" layoutY="35.0" prefHeight="25.0" prefWidth="38.0" text="-" />
       <Label layoutX="429.0" prefHeight="25.0" prefWidth="54.0" text="Outputs" textAlignment="CENTER" />
-      <Label layoutX="318.0" layoutY="68.0" prefHeight="25.0" prefWidth="180.0" text="Anzahl der Großbuchstaben:" />
+      <Label layoutX="318.0" layoutY="68.0" prefHeight="25.0" prefWidth="180.0" text="Anteil der Großbuchstaben:" />
       <Label fx:id="labelUpperCaceCount" layoutX="545.0" layoutY="64.0" prefHeight="25.0" prefWidth="31.0" text="-" />
       <Label layoutX="318.0" layoutY="100.0" prefHeight="25.0" prefWidth="197.0" text="Anzahl der Anführungszeichen:" />
       <Label fx:id="labelExclamationMarkCount" layoutX="547.0" layoutY="104.0" prefHeight="17.0" prefWidth="31.0" text="-" />

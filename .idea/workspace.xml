@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1889689e-187b-4d94-a64a-6a62a308c233" name="Default" comment="Add DatabaseGenerator, minor fixes">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="1889689e-187b-4d94-a64a-6a62a308c233" name="Default" comment="Change uppercase function&#10;Doesnt count the uppercases,">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" afterPath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml" />
@@ -45,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -55,27 +54,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseGenerator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+            <state relative-caret-position="255">
+              <caret line="84" column="23" lean-forward="false" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1495183808424" expanded="true" signature="983:1015" ph="DROP TABLE I... " />
-                <marker date="1495183808424" expanded="true" signature="1265:1406" ph="CREATE TABLE... newsResults" />
-                <marker date="1495183808424" expanded="true" signature="1598:1624" ph="SELECT * FRO... newsarticles" />
-                <marker date="1495183808424" expanded="true" signature="2665:2697" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2750" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2767" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2779" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2781" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2782" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2799" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2800" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2812" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2813" ph="INSERT INTO newsResults... " />
-                <marker date="1495183808424" expanded="true" signature="2665:2827" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="983:1015" ph="DROP TABLE I... " />
+                <marker date="1495190448016" expanded="true" signature="1265:1416" ph="CREATE TABLE... newsResults" />
+                <marker date="1495190448016" expanded="true" signature="1608:1634" ph="SELECT * FRO... newsarticles" />
+                <marker date="1495190448016" expanded="true" signature="2678:2710" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2763" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2780" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2792" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2794" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2795" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2812" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2813" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2825" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2826" ph="INSERT INTO newsResults... " />
+                <marker date="1495190448016" expanded="true" signature="2678:2840" ph="INSERT INTO newsResults... " />
               </folding>
             </state>
           </provider>
@@ -84,8 +83,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="159" column="8" lean-forward="true" selection-start-line="159" selection-start-column="8" selection-end-line="162" selection-end-column="22" />
+            <state relative-caret-position="334">
+              <caret line="113" column="23" lean-forward="false" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,8 +95,8 @@
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="26" column="69" lean-forward="false" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
+            <state relative-caret-position="272">
+              <caret line="19" column="92" lean-forward="false" selection-start-line="19" selection-start-column="92" selection-end-line="19" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -131,8 +130,8 @@
         <option value="$USER_HOME$/Downloads/mysql-connector-java-5.1.42-bin.jar!/com/mysql/jdbc/SQLError.class" />
         <option value="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/NewsArticle.java" />
         <option value="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java" />
+        <option value="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" />
       </list>
     </option>
   </component>
@@ -279,7 +278,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DatabaseGenerator">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -724,8 +723,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.DatabaseGenerator" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.DatabaseGenerator" />
         <item index="2" class="java.lang.String" itemvalue="Application.NewsArticle" />
       </list>
     </recent_temporary>
@@ -743,7 +742,7 @@
       <workItem from="1495091501847" duration="2390000" />
       <workItem from="1495098521191" duration="101000" />
       <workItem from="1495118830572" duration="6791000" />
-      <workItem from="1495175071810" duration="8180000" />
+      <workItem from="1495175071810" duration="10787000" />
     </task>
     <task id="LOCAL-00001" summary="Add NewsArticle.class and MySQL-Library">
       <created>1495092970866</created>
@@ -766,11 +765,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495180009319</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add function numberOfCitations">
+      <created>1495183911685</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1495183911685</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17462000" />
+    <option name="totallyTimeSpent" value="20069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -849,7 +855,8 @@
     <MESSAGE value="Add NewsArticle.class and MySQL-Library" />
     <MESSAGE value="Add DatabaseGenerator, minor fixes" />
     <MESSAGE value="Add comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add comments" />
+    <MESSAGE value="Add function numberOfCitations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add function numberOfCitations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -911,20 +918,20 @@
           <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495183808424" expanded="true" signature="983:1015" ph="DROP TABLE I... " />
-            <marker date="1495183808424" expanded="true" signature="1265:1406" ph="CREATE TABLE... newsResults" />
-            <marker date="1495183808424" expanded="true" signature="1598:1624" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495183808424" expanded="true" signature="2665:2697" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2750" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2767" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2779" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2781" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2782" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2799" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2800" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2812" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2813" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2827" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="983:1015" ph="DROP TABLE I... " />
+            <marker date="1495190448016" expanded="true" signature="1265:1416" ph="CREATE TABLE... newsResults" />
+            <marker date="1495190448016" expanded="true" signature="1608:1634" ph="SELECT * FRO... newsarticles" />
+            <marker date="1495190448016" expanded="true" signature="2678:2710" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2763" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2780" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2792" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2794" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2795" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2812" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2813" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2825" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2826" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2840" ph="INSERT INTO newsResults... " />
           </folding>
         </state>
       </provider>
@@ -968,35 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="69" lean-forward="false" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="159" column="8" lean-forward="true" selection-start-line="159" selection-start-column="8" selection-end-line="162" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/NewsArticle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -1012,27 +990,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        <state relative-caret-position="272">
+          <caret line="19" column="92" lean-forward="false" selection-start-line="19" selection-start-column="92" selection-end-line="19" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="113" column="23" lean-forward="false" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495183808424" expanded="true" signature="983:1015" ph="DROP TABLE I... " />
-            <marker date="1495183808424" expanded="true" signature="1265:1406" ph="CREATE TABLE... newsResults" />
-            <marker date="1495183808424" expanded="true" signature="1598:1624" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495183808424" expanded="true" signature="2665:2697" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2750" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2767" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2779" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2781" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2782" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2799" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2800" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2812" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2813" ph="INSERT INTO newsResults... " />
-            <marker date="1495183808424" expanded="true" signature="2665:2827" ph="INSERT INTO newsResults... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="84" column="23" lean-forward="false" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1495190448016" expanded="true" signature="983:1015" ph="DROP TABLE I... " />
+            <marker date="1495190448016" expanded="true" signature="1265:1416" ph="CREATE TABLE... newsResults" />
+            <marker date="1495190448016" expanded="true" signature="1608:1634" ph="SELECT * FRO... newsarticles" />
+            <marker date="1495190448016" expanded="true" signature="2678:2710" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2763" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2780" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2792" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2794" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2795" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2812" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2813" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2825" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2826" ph="INSERT INTO newsResults... " />
+            <marker date="1495190448016" expanded="true" signature="2678:2840" ph="INSERT INTO newsResults... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
