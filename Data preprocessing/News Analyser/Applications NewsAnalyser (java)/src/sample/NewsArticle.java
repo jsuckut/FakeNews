@@ -11,7 +11,9 @@ import java.sql.Date;
 
 /**
  * @author Hendrik Jöntgen
- *
+ * In dieser Klasse wird das Objekt des NewsArtikel definiert.
+ * Durch Zugriff auf die SQL-Datenbank können entweder beliebig viele NewsArtikel und ein einzelner NewsArtikel mit einer beliebigen newsID erstellt werden.
+ * Diese NewsArtikel-Objekte haben sämtliche Attribute, die in der SQL-Datenbank vorhanden sind.
  */
 public class NewsArticle {
 
@@ -20,9 +22,11 @@ public class NewsArticle {
      * @param args
      * @throws Exception
      */
+
+
     public static void main(String[] args) throws Exception {
         getConnection();
-        generateNewsArticles(18);
+       // generateNewsArticles(18);
 
     }
     public String title;
@@ -36,6 +40,7 @@ public class NewsArticle {
     public ArrayList<String> author;
     public boolean isFake;
 
+    //Daten zur SQL-Verbindung und die Funktion um eine Verbindung zur SQL-Datenbank aufzubauen
     public static Connection getConnection() throws Exception{
         try{
             String driver = "com.mysql.jdbc.Driver";
@@ -69,6 +74,8 @@ public class NewsArticle {
             url = result.getString("url");
             isFake = result.getBoolean("isfake");
 
+            //Die Autoren sind hier ein besonderer Fall, da sie in einer separaten Tabelle gespeichert sind und somit eine Art Join notwendig ist.
+            //Auf einen klassischen Join wurde hier aber verzichtet und eine While-Schleife erstellt, welche sämtliche Autoren, welche am Artikel beteiligt waren, raussucht.
             PreparedStatement authorsStatement = con.prepareStatement("SELECT * FROM newsauthors WHERE newsID=" + newsID);
             ResultSet authorResult = authorsStatement.executeQuery();
             ArrayList<String> author = new ArrayList<String>();
@@ -80,7 +87,7 @@ public class NewsArticle {
                 }
             }
 
-
+//Konsolen-Outputs um die erfolgreiche Objekt-Erstellung zu überprüfen
             System.out.println("NewsArticles-Objekt mit ID=" + result.getString("newsID") + " erstellt.");
             System.out.println(title);
             System.out.println(author.toString());
@@ -88,7 +95,7 @@ public class NewsArticle {
 
     }
 
-
+//Diese Funktion lässt eine bestimmte Anzahl von NewsArtikel erstellt werden.
     public static NewsArticle[] generateNewsArticles(int amount) throws Exception{
         Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM newsarticles");
@@ -104,7 +111,7 @@ public class NewsArticle {
         return newsArticles;
     }
 
-
+//Getter für die Attribute, sind glaub ich nicht wirklich notwendig, da man einfach direkt auf die Attribute zugreifen kann.
     public String getTitle() {
         return title;
     }
