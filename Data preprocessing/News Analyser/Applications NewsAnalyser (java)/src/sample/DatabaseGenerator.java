@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.regex.Pattern;
 
 /**
  * Created by Hendrik Jöntgen on 18.05.2017.
@@ -23,7 +24,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases int, questions int, exclamations int, authors int)");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases int, questions int, exclamations int, authors int, citations int)");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -39,8 +40,9 @@ public class DatabaseGenerator {
             //TODO Ich bekomm die getNumberOfAuthors Methode nicht zu laufen. Gibt mir immer ne NullPointerException raus
             int authors = 1;
                     // getNumberOfAuthors(news);
+            int citations = getNumberOfCitations(news);
              //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-            PreparedStatement InsertStatement = sqlConnection.prepareStatement("INSERT INTO newsResults values ("+resultSet.getInt("newsID")+", "+isFake+","+words+", "+uppercases+", "+questions+", "+exclamations+", "+authors+")");
+            PreparedStatement InsertStatement = sqlConnection.prepareStatement("INSERT INTO newsResults values ("+resultSet.getInt("newsID")+", "+isFake+","+words+", "+uppercases+", "+questions+", "+exclamations+", "+authors+", "+citations+")");
             result = InsertStatement.executeUpdate();
         }
 
@@ -134,6 +136,19 @@ public class DatabaseGenerator {
             return news.getAuthor().size();
         }
 
+    }
+
+    /**
+     * This method count the citations of a given NewsArticle.
+     * @param news
+     * @return The number of citations
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-18
+     */
+    public static int getNumberOfCitations(NewsArticle news){
+        Pattern citations = Pattern.compile("\"[^\"]+\"");
+        int splits = citations.split(news.getContent()).length;
+        return splits;
     }
 
 

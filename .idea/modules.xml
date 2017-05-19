@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/Applications NewsAnalyser (java).iml" filepath="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/Applications NewsAnalyser (java).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FakeNews.iml" filepath="$PROJECT_DIR$/.idea/FakeNews.iml" />
     </modules>
   </component>
 </project>

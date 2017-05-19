@@ -17,7 +17,10 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 // The class constructor
 public class Controller {
@@ -41,6 +44,8 @@ public class Controller {
     @FXML // The Label for number of labelQuestionMarkCount
     private Label labelQuestionMarkCount;
 
+    @FXML // The Label for number of labelCitationsCount
+    private Label labelCitationsCount;
 
     /**
      * This central method import the News text form the user.
@@ -63,12 +68,14 @@ public class Controller {
         String sCountOfUpperCase = Integer.toString(getNumberOfUpperCase(sNewsText));
         String sCountOfExclamationMarkCount = Integer.toString(getNumberOfExclamationMark(sNewsText));
         String sCountOFQuestionMarkCount = Integer.toString(getNumberOfQuestionMark(sNewsText));
+        String sCountOfCitations = Integer.toString(getNumberOfCitations(sNewsText));
 
         // Print all information in the GUI
         labelWortCount.setText(sCountOfWord);
         labelUpperCaceCount.setText(sCountOfUpperCase);
         labelExclamationMarkCount.setText(sCountOfExclamationMarkCount);
         labelQuestionMarkCount.setText(sCountOFQuestionMarkCount);
+        labelCitationsCount.setText(sCountOfCitations);
 
     }
 
@@ -140,6 +147,21 @@ public class Controller {
             }
         }
         return iQuestionMark;
+    }
+
+    /**
+     * This method count the citations of a given NewsArticle.
+     * @param sText
+     * @return The number of citations
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-18
+     */
+    public static int getNumberOfCitations(String sText){
+        Pattern citations = Pattern.compile("\"[^\"]+\"");
+        String citationsString = "\"[^\"]+\"";
+        int splits = citations.split(sText).length;
+        return splits;
+
     }
 
 
