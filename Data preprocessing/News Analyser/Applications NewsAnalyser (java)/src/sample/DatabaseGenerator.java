@@ -174,14 +174,19 @@ public class DatabaseGenerator {
         return splits;
     }
 
-
+    /**
+     * This method count the usage of a given person in a given NewsArticle.
+     *
+     * @return The number of occurences of a person
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-20
+     */
     public static double getPersonDistribution(NewsArticle news, Pattern person) {
         Matcher personMatcher = person.matcher(news.getContent());
         int PersonOccurrence = 0;
 
         while (personMatcher.find())
             PersonOccurrence++;
-
         return PersonOccurrence / (double) getCountOfWords(news);
 
     }

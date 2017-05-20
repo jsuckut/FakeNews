@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // The class constructor
@@ -47,6 +48,25 @@ public class Controller {
     @FXML // The Label for number of labelCitationsCount
     private Label labelCitationsCount;
 
+    @FXML // The Label for number of firstPersonsOccurences
+    private Label labelFirstPersonCount;
+
+    @FXML // The Label for number of secondPersonsOccurences
+    private Label labelSecondPersonCount;
+
+    @FXML // The Label for number of thirdPersonsOccurences
+    private Label labelThirdPersonCount;
+
+
+
+    public static Pattern firstPersonPattern = Pattern.compile("((\\bi\\b)|(\\bme\\b)|(\\bmy\\b)|(\\bmine\\b)|(\\bmyself\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern secondPersonPattern = Pattern.compile("((\\byou\\b)|(\\byour\\b)|(\\byour\\b)|(\\byourself\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern thirdPersonPattern = Pattern.compile("((\\bhe\\b)|(\\bhim\\b)|(\\bhis\\b)|(\\bhimself\\b)|(\\bshe\\b)|(\\bher\\b)|(\\bhers\\b)|(\\bherself\\b)|(\\bit\\b)|(\\bits\\b)|(\\bhimself\\b)|(\\bitself\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern firstPluralPersonPattern = Pattern.compile("((\\bwe\\b)|(\\bus\\b)|(\\bour\\b)|(\\bours\\b)|(\\bourself\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern secondPluralPersonPattern = Pattern.compile("((\\byou\\b)|(\\byour\\b)|(\\byour\\b)|(\\byourselves\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern thirdPluralPersonPattern = Pattern.compile("((\\bthey\\b)|(\\bthem\\b)|(\\btheir\\b)|(\\bthemselves\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern exclusiveThirdPluralPersonPattern = Pattern.compile("(\byourselves\b)", Pattern.CASE_INSENSITIVE);
+
     /**
      * This central method import the News text form the user.
      * And now the business logic can use the String for operation.
@@ -69,6 +89,9 @@ public class Controller {
         String sCountOfExclamationMarkCount = Integer.toString(getNumberOfExclamationMark(sNewsText));
         String sCountOFQuestionMarkCount = Integer.toString(getNumberOfQuestionMark(sNewsText));
         String sCountOfCitations = Integer.toString(getNumberOfCitations(sNewsText));
+        String sCountOfFirstPersonOccurences = Double.toString(getPersonDistribution(sNewsText,firstPersonPattern)+getPersonDistribution(sNewsText,firstPluralPersonPattern));
+        String sCountOfSecondPersonOccurences = Double.toString(getPersonDistribution(sNewsText,secondPersonPattern)+getPersonDistribution(sNewsText,secondPluralPersonPattern));
+        String sCountOfThirdPersonOccurences = Double.toString(getPersonDistribution(sNewsText,thirdPersonPattern)+getPersonDistribution(sNewsText,exclusiveThirdPluralPersonPattern));
 
         // Print all information in the GUI
         labelWortCount.setText(sCountOfWord);
@@ -76,6 +99,9 @@ public class Controller {
         labelExclamationMarkCount.setText(sCountOfExclamationMarkCount);
         labelQuestionMarkCount.setText(sCountOFQuestionMarkCount);
         labelCitationsCount.setText(sCountOfCitations);
+        labelFirstPersonCount.setText(sCountOfFirstPersonOccurences);
+        labelSecondPersonCount.setText(sCountOfSecondPersonOccurences);
+        labelThirdPersonCount.setText(sCountOfThirdPersonOccurences);
 
     }
 
@@ -158,11 +184,26 @@ public class Controller {
      */
     public static int getNumberOfCitations(String sText){
         Pattern citations = Pattern.compile("\"[^\"]+\"");
-        String citationsString = "\"[^\"]+\"";
         int splits = citations.split(sText).length;
         return splits;
 
     }
 
+    /**
+     * This method count the usage of a given person in a given NewsArticle.
+     *
+     * @return The number of occurences of a person
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-20
+     */
+    public static double getPersonDistribution(String sText, Pattern person) {
+        Matcher personMatcher = person.matcher(sText);
+        int PersonOccurrence = 0;
+
+        while (personMatcher.find())
+            PersonOccurrence++;
+        return PersonOccurrence / (double) getCountOfWords(sText);
+
+    }
 
 }
