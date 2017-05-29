@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1889689e-187b-4d94-a64a-6a62a308c233" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/Applications NewsAnalyser (java).iml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/Applications NewsAnalyser (java).iml" afterPath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/Application.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" afterPath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml" afterPath="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java" afterPath="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,104 +31,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NewsArticle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/NewsArticle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1836">
-              <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
-              <folding>
-                <element signature="e#4710#4711#0" expanded="false" />
-                <element signature="e#4738#4739#0" expanded="false" />
-                <element signature="e#4771#4772#0" expanded="false" />
-                <element signature="e#4801#4802#0" expanded="false" />
-                <element signature="e#4829#4830#0" expanded="false" />
-                <element signature="e#4856#4857#0" expanded="false" />
-                <element signature="e#4890#4891#0" expanded="false" />
-                <element signature="e#4924#4925#0" expanded="false" />
-                <element signature="e#4960#4961#0" expanded="false" />
-                <element signature="e#4996#4997#0" expanded="false" />
-                <element signature="e#5032#5033#0" expanded="false" />
-                <element signature="e#5068#5069#0" expanded="false" />
-                <element signature="e#5101#5102#0" expanded="false" />
-                <element signature="e#5134#5135#0" expanded="false" />
-                <element signature="e#5163#5164#0" expanded="false" />
-                <element signature="e#5189#5190#0" expanded="false" />
-                <element signature="e#5232#5233#0" expanded="false" />
-                <element signature="e#5261#5262#0" expanded="false" />
-                <element signature="e#5290#5291#0" expanded="false" />
-                <element signature="e#5319#5320#0" expanded="false" />
-                <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-                <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-                <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-                <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseGenerator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseGenerator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="28" selection-end-column="124" />
+            <state relative-caret-position="2618">
+              <caret line="154" column="18" lean-forward="false" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-                <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-                <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-                <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-                <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+                <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+                <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+                <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+                <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+                <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+                <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-248">
-              <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="32" column="106" lean-forward="false" selection-start-line="32" selection-start-column="106" selection-end-line="32" selection-end-column="106" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -139,6 +57,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>system</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -155,10 +78,10 @@
         <option value="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java" />
         <option value="$USER_HOME$/Downloads/mysql-connector-java-5.1.42-bin.jar!/com/mysql/jdbc/SQLError.class" />
         <option value="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/NewsArticle.java" />
-        <option value="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java" />
         <option value="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/SentimentAnalysis.java" />
         <option value="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml" />
+        <option value="$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java" />
       </list>
     </option>
   </component>
@@ -192,8 +115,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -202,7 +126,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Data preprocessing" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -210,18 +134,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="FakeNews" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Data preprocessing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="News Analyser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Applications NewsAnalyser (java)" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
@@ -232,9 +144,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FakeNews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Applications NewsAnalyser (java)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,7 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.DatabaseGenerator">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -300,21 +221,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="DatabaseGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="DatabaseGenerator" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="FakeNews" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="SentimentAnalysis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="SentimentAnalysis" />
@@ -327,6 +233,21 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="FakeNews" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="DatabaseGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseGenerator" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Applications NewsAnalyser (java)1" />
       <envs />
       <method />
     </configuration>
@@ -720,14 +641,14 @@
     <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.NewsArticle" />
-      <item index="2" class="java.lang.String" itemvalue="Application.DatabaseGenerator" />
-      <item index="3" class="java.lang.String" itemvalue="Application.SentimentAnalysis" />
+      <item index="2" class="java.lang.String" itemvalue="Application.SentimentAnalysis" />
+      <item index="3" class="java.lang.String" itemvalue="Application.DatabaseGenerator" />
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Application.SentimentAnalysis" />
-        <item index="2" class="java.lang.String" itemvalue="Application.DatabaseGenerator" />
+        <item index="0" class="java.lang.String" itemvalue="Application.DatabaseGenerator" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="2" class="java.lang.String" itemvalue="Application.SentimentAnalysis" />
         <item index="3" class="java.lang.String" itemvalue="Application.NewsArticle" />
       </list>
     </recent_temporary>
@@ -750,6 +671,7 @@
       <workItem from="1495202997604" duration="213000" />
       <workItem from="1495266109079" duration="9782000" />
       <workItem from="1495290721256" duration="2348000" />
+      <workItem from="1496044969835" duration="548000" />
     </task>
     <task id="LOCAL-00001" summary="Add NewsArticle.class and MySQL-Library">
       <created>1495092970866</created>
@@ -797,11 +719,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35500000" />
+    <option name="totallyTimeSpent" value="36048000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -818,7 +739,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.175" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -898,30 +819,10 @@
         <state relative-caret-position="1836">
           <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -930,7 +831,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="28" selection-end-column="124" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="106" lean-forward="false" selection-start-line="32" selection-start-column="106" selection-end-line="32" selection-end-column="106" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/NewsArticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
+          <folding>
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -945,14 +912,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="92" lean-forward="false" selection-start-line="19" selection-start-column="92" selection-end-line="19" selection-end-column="92" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
@@ -961,25 +928,12 @@
           <caret line="180" column="32" lean-forward="true" selection-start-line="180" selection-start-column="32" selection-end-line="180" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-            <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-            <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
           </folding>
         </state>
       </provider>
@@ -989,30 +943,10 @@
         <state relative-caret-position="1836">
           <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1021,7 +955,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,38 +969,25 @@
           <caret line="160" column="7" lean-forward="true" selection-start-line="160" selection-start-column="7" selection-end-line="167" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-            <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-            <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="92" lean-forward="false" selection-start-line="19" selection-start-column="92" selection-end-line="19" selection-end-column="92" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
@@ -1080,30 +1005,10 @@
         <state relative-caret-position="1836">
           <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1112,7 +1017,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1127,14 +1036,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="92" lean-forward="false" selection-start-line="19" selection-start-column="92" selection-end-line="19" selection-end-column="92" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
@@ -1143,25 +1052,12 @@
           <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-            <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-            <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
           </folding>
         </state>
       </provider>
@@ -1171,30 +1067,10 @@
         <state relative-caret-position="1836">
           <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1205,25 +1081,12 @@
           <caret line="84" column="23" lean-forward="false" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-            <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-            <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
           </folding>
         </state>
       </provider>
@@ -1239,21 +1102,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="92" lean-forward="false" selection-start-line="19" selection-start-column="92" selection-end-line="19" selection-end-column="92" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
+          <folding>
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1262,30 +1129,10 @@
         <state relative-caret-position="1292">
           <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1294,7 +1141,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
+          <folding>
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1321,25 +1172,12 @@
           <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-            <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-            <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
           </folding>
         </state>
       </provider>
@@ -1349,30 +1187,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1382,30 +1200,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1423,30 +1221,10 @@
         <state relative-caret-position="1836">
           <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="124" selection-end-line="113" selection-end-column="124" />
           <folding>
-            <element signature="e#4710#4711#0" expanded="false" />
-            <element signature="e#4738#4739#0" expanded="false" />
-            <element signature="e#4771#4772#0" expanded="false" />
-            <element signature="e#4801#4802#0" expanded="false" />
-            <element signature="e#4829#4830#0" expanded="false" />
-            <element signature="e#4856#4857#0" expanded="false" />
-            <element signature="e#4890#4891#0" expanded="false" />
-            <element signature="e#4924#4925#0" expanded="false" />
-            <element signature="e#4960#4961#0" expanded="false" />
-            <element signature="e#4996#4997#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5068#5069#0" expanded="false" />
-            <element signature="e#5101#5102#0" expanded="false" />
-            <element signature="e#5134#5135#0" expanded="false" />
-            <element signature="e#5163#5164#0" expanded="false" />
-            <element signature="e#5189#5190#0" expanded="false" />
-            <element signature="e#5232#5233#0" expanded="false" />
-            <element signature="e#5261#5262#0" expanded="false" />
-            <element signature="e#5290#5291#0" expanded="false" />
-            <element signature="e#5319#5320#0" expanded="false" />
-            <marker date="1495179958287" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495179958287" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
-            <marker date="1495179958287" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
-            <marker date="1495179958287" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="1932:1972" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496044931152" expanded="true" signature="2986:3025" ph="SELECT * FRO... newsauthors" />
+            <marker date="1496044931152" expanded="true" signature="3288:3325" ph="SELECT * FRO... authors" />
+            <marker date="1496044931152" expanded="true" signature="4166:4192" ph="SELECT * FRO... newsarticles" />
           </folding>
         </state>
       </provider>
@@ -1455,44 +1233,19 @@
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="28" selection-end-column="124" />
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495278082294" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
-            <marker date="1495278082294" expanded="true" signature="2468:2698" ph="CREATE TABLE... newsResults" />
-            <marker date="1495278082294" expanded="true" signature="2890:2916" ph="SELECT * FRO... newsarticles" />
-            <marker date="1495278082294" expanded="true" signature="4405:4437" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4503" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4524" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4539" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4542" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4543" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4564" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4565" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4581" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4582" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4600" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4629" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4630" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4659" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4660" ph="INSERT INTO newsResults... " />
-            <marker date="1495278082294" expanded="true" signature="4405:4687" ph="INSERT INTO newsResults... " />
+            <marker date="1496044931106" expanded="true" signature="590:823" ph="{...}" />
+            <marker date="1496044931106" expanded="true" signature="868:879" ph=" { " />
+            <marker date="1496044931106" expanded="true" signature="892:898" ph=" }" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248">
-          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+        <state relative-caret-position="901">
+          <caret line="72" column="35" lean-forward="false" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1500,14 +1253,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data preprocessing/Applications NewsAnalyser (java)/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
+        <state relative-caret-position="544">
           <caret line="32" column="106" lean-forward="false" selection-start-line="32" selection-start-column="106" selection-end-line="32" selection-end-column="106" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data preprocessing/News Analyser/Applications NewsAnalyser (java)/src/sample/DatabaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="154" column="18" lean-forward="false" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1496045396429" expanded="true" signature="2186:2218" ph="DROP TABLE I... " />
+            <marker date="1496045396429" expanded="true" signature="2468:2727" ph="CREATE TABLE... newsResults" />
+            <marker date="1496045396429" expanded="true" signature="2919:2945" ph="SELECT * FRO... newsarticles" />
+            <marker date="1496045396429" expanded="true" signature="4509:4764" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4791" ph="INSERT INTO newsResults... " />
+            <marker date="1496045396429" expanded="true" signature="4509:4818" ph="INSERT INTO newsResults... " />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
@@ -1562,12 +1331,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>FakeNews</last-edited>
+          <last-edited>Applications NewsAnalyser (java)1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

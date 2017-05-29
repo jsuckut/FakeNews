@@ -36,7 +36,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(4,2))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -52,6 +52,7 @@ public class DatabaseGenerator {
             double firstPersonOccurences = getPersonDistribution(news, firstPersonPattern)+getPersonDistribution(news, firstPluralPersonPattern);
             double secondPersonOccurences = getPersonDistribution(news, secondPersonPattern)+getPersonDistribution(news, secondPluralPersonPattern);
             double thirdPersonOccurences = getPersonDistribution(news, thirdPersonPattern)+getPersonDistribution(news, exclusivethirdPluralPersonPattern);
+            double averageSentenceLength = getAverageSentenceLength(news);
 
 
             //TODO Ich bekomm die getNumberOfAuthors Methode nicht zu laufen. Gibt mir immer ne NullPointerException raus
@@ -59,7 +60,7 @@ public class DatabaseGenerator {
             // getNumberOfAuthors(news);
             int citations = getNumberOfCitations(news);
             //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-            PreparedStatement InsertStatement = sqlConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " +firstPersonOccurences+ ", " +secondPersonOccurences+ ", " +thirdPersonOccurences+")");
+            PreparedStatement InsertStatement = sqlConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " +firstPersonOccurences+ ", " +secondPersonOccurences+ ", " +thirdPersonOccurences+", "+averageSentenceLength+")");
             result = InsertStatement.executeUpdate();
         }
 
@@ -98,7 +99,6 @@ public class DatabaseGenerator {
                 iUpperCase++;
             }
         }
-        System.out.println(iUpperCase / sText.length());
         return (double) iUpperCase / (double) sText.length();
 
     }
@@ -188,6 +188,21 @@ public class DatabaseGenerator {
         while (personMatcher.find())
             PersonOccurrence++;
         return PersonOccurrence / (double) getCountOfWords(news);
+
+    }
+
+
+    public static double getAverageSentenceLength(NewsArticle news) {
+        int sentenceCount = 0;
+
+        for (int iIndex = 0; iIndex < news.getContent().length(); ++iIndex) {
+            char cLetter = news.getContent().charAt(iIndex);
+            if (cLetter == 46 || cLetter == 33 || cLetter == 63) {
+                sentenceCount++;
+            }
+        }
+
+        return (double) getCountOfWords(news) / sentenceCount;
 
     }
 }
