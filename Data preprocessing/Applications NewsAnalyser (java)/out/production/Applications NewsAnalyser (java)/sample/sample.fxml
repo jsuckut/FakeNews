@@ -10,8 +10,11 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" />
-      <HBox prefHeight="400.0" prefWidth="600.0" />
-      <Label layoutX="112.0" prefHeight="25.0" prefWidth="100.0" text="Inputs" textAlignment="CENTER" />
+      <HBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label prefHeight="234.0" prefWidth="440.0" text="Anzahl N-Gramm - Trigramm:" />
+         </children></HBox>
+      <Label layoutX="112.0" prefHeight="25.0" prefWidth="456.0" text="Inputs" textAlignment="CENTER" />
       <TextField fx:id="InputNews" alignment="TOP_LEFT" layoutX="11.0" layoutY="31.0" prefHeight="262.0" prefWidth="287.0" promptText="Please type your news in..." />
       <Button fx:id="ButtonInput" layoutX="64.0" layoutY="300.0" mnemonicParsing="false" onAction="#InputHandle" prefHeight="27.0" prefWidth="152.0" text="Button" />
       <Label layoutX="318.0" layoutY="30.0" prefHeight="27.0" prefWidth="180.0" text="Anzahl der Worte:" />
@@ -31,8 +34,8 @@
       <Label fx:id="labelSecondPersonCount" layoutX="546.0" layoutY="170.0" prefHeight="17.0" prefWidth="38.0" text="-" />
       <Label layoutX="318.0" layoutY="190.0" prefHeight="17.0" prefWidth="197.0" text="Verwendung der dritten Person:" />
       <Label fx:id="labelThirdPersonCount" layoutX="546.0" layoutY="190.0" prefHeight="17.0" prefWidth="38.0" text="-" />
-      <Label layoutX="319.0" layoutY="216.0" prefHeight="17.0" prefWidth="197.0" text="Anzahl N-Gramm - Bigramm:" />
-      <Label fx:id="labelBiGramm" layoutX="544.0" layoutY="219.0" prefHeight="17.0" prefWidth="38.0" text="-" />
+      <Label layoutX="319.0" layoutY="208.0" prefHeight="17.0" prefWidth="197.0" text="Anzahl N-Gramm - Bigramm:" />
+      <Label fx:id="labelBiGramm" layoutX="551.0" layoutY="209.0" prefHeight="17.0" prefWidth="31.0" text="-" />
 
    </children>
 </AnchorPane>
