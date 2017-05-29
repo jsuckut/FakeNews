@@ -264,13 +264,10 @@ public class Controller {
 
         for(int iIndex = 0; iIndex < sText.length(); iIndex++) {
             char cLetter = sText.charAt(iIndex);
-            System.out.println(cLetter);
-
             if (cLetter == '.' || cLetter == '!' || cLetter == '?') {
                 iSentencecount++;
             }
         }
-        System.out.println(iSentencecount );
             return iSentencecount ;
     }
 
