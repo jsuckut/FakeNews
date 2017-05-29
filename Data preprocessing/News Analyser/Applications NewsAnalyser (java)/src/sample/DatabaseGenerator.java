@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.StringTokenizer;
+import java.util.*;
 import java.sql.DriverManager;
-import java.util.ArrayList;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,7 +35,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(4,2))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(4,2), repetitiveness decimal (4,3))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -53,17 +52,17 @@ public class DatabaseGenerator {
             double secondPersonOccurences = getPersonDistribution(news, secondPersonPattern)+getPersonDistribution(news, secondPluralPersonPattern);
             double thirdPersonOccurences = getPersonDistribution(news, thirdPersonPattern)+getPersonDistribution(news, exclusivethirdPluralPersonPattern);
             double averageSentenceLength = getAverageSentenceLength(news);
+            double repetitiveness = getRepetitiveness(news);
 
 
             //TODO Ich bekomm die getNumberOfAuthors Methode nicht zu laufen. Gibt mir immer ne NullPointerException raus
-            int authors = 1;
-            // getNumberOfAuthors(news);
+            int authors = news.numberOfAuthors;
             int citations = getNumberOfCitations(news);
 
 
                 Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -150,23 +149,6 @@ public class DatabaseGenerator {
         return iQuestionMark;
     }
 
-    /**
-     * This method count the Authors of a given NewsArticle.
-     *
-     * @param news
-     * @return The number of authors
-     * @author: Hendrik Joentgen
-     * @update: 2017-05-18
-     */
-    public static int getNumberOfAuthors(NewsArticle news) {
-        if (news.getAuthor() == null || news.getAuthor().isEmpty()) {
-            System.out.println("Returned 0");
-            return 0;
-        } else {
-            return news.getAuthor().size();
-        }
-
-    }
 
     /**
      * This method count the citations of a given NewsArticle.
@@ -201,7 +183,7 @@ public class DatabaseGenerator {
 
 
     public static double getAverageSentenceLength(NewsArticle news) {
-        int sentenceCount = 0;
+        double sentenceCount = 0;
 
         for (int iIndex = 0; iIndex < news.getContent().length(); ++iIndex) {
             char cLetter = news.getContent().charAt(iIndex);
@@ -209,9 +191,17 @@ public class DatabaseGenerator {
                 sentenceCount++;
             }
         }
-
         return (double) getCountOfWords(news) / sentenceCount;
+    }
 
+    public static double getRepetitiveness(NewsArticle news){
+        Set<String> uniqueWords = new HashSet<String>();
+        String[] words = news.getContent().split(" ");
+        //noOWoInString.addAll(words);
+        for(String wrd:words){
+            uniqueWords.add(wrd);
+        }
+        return (double)uniqueWords.size()/getCountOfWords(news);
     }
 }
 

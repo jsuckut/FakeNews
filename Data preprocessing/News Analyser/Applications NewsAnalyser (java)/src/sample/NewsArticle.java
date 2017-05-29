@@ -38,6 +38,7 @@ public class NewsArticle {
     public int usedImages;
     public String url;
     public ArrayList<String> author;
+    public int numberOfAuthors;
     public boolean isFake;
 
     //Daten zur SQL-Verbindung und die Funktion um eine Verbindung zur SQL-Datenbank aufzubauen
@@ -86,12 +87,10 @@ public class NewsArticle {
                     author.add(namesResult.getString("firstname")+" "+namesResult.getString("lastname"));
                 }
             }
-
+            numberOfAuthors = author.size();
 
 //Konsolen-Outputs um die erfolgreiche Objekt-Erstellung zu überprüfen
             System.out.println("NewsArticles-Objekt mit ID=" + result.getString("newsID") + " erstellt.");
-            System.out.println(title);
-            System.out.println(author.toString());
             result.close();
             newsStatement.close();
             con.close();
