@@ -31,6 +31,8 @@
       <Label fx:id="labelSecondPersonCount" layoutX="546.0" layoutY="170.0" prefHeight="17.0" prefWidth="38.0" text="-" />
       <Label layoutX="318.0" layoutY="190.0" prefHeight="17.0" prefWidth="197.0" text="Verwendung der dritten Person:" />
       <Label fx:id="labelThirdPersonCount" layoutX="546.0" layoutY="190.0" prefHeight="17.0" prefWidth="38.0" text="-" />
+      <Label layoutX="319.0" layoutY="216.0" prefHeight="17.0" prefWidth="197.0" text="Anzahl N-Gramm - Bigramm:" />
+      <Label fx:id="labelBiGramm" layoutX="544.0" layoutY="219.0" prefHeight="17.0" prefWidth="38.0" text="-" />
 
    </children>
 </AnchorPane>

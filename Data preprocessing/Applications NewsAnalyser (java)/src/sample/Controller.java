@@ -57,6 +57,9 @@ public class Controller {
     @FXML // The Label for number of thirdPersonsOccurences
     private Label labelThirdPersonCount;
 
+    @FXML // The Label for number of BiGramm
+    private Label labelBiGramm;
+
 
 
     public static Pattern firstPersonPattern = Pattern.compile("((\\bi\\b)|(\\bme\\b)|(\\bmy\\b)|(\\bmine\\b)|(\\bmyself\\b))", Pattern.CASE_INSENSITIVE);
@@ -93,6 +96,8 @@ public class Controller {
         String sCountOfSecondPersonOccurences = Double.toString(getPersonDistribution(sNewsText,secondPersonPattern)+getPersonDistribution(sNewsText,secondPluralPersonPattern));
         String sCountOfThirdPersonOccurences = Double.toString(getPersonDistribution(sNewsText,thirdPersonPattern)+getPersonDistribution(sNewsText,exclusiveThirdPluralPersonPattern));
 
+       String sBiGramm = Double.toString(getNumberofNGrammes(sNewsText, 2));
+
         // Print all information in the GUI
         labelWortCount.setText(sCountOfWord);
         labelUpperCaceCount.setText(sCountOfUpperCase);
@@ -102,6 +107,8 @@ public class Controller {
         labelFirstPersonCount.setText(sCountOfFirstPersonOccurences);
         labelSecondPersonCount.setText(sCountOfSecondPersonOccurences);
         labelThirdPersonCount.setText(sCountOfThirdPersonOccurences);
+        labelBiGramm.setText(sBiGramm);
+
 
     }
 
