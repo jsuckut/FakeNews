@@ -1,5 +1,8 @@
 
 
+import org.jsoup.Jsoup;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,7 +38,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(4,2), repetitiveness decimal (4,3))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(4,2), repetitiveness decimal (4,3), authorHits int)");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -53,6 +56,7 @@ public class DatabaseGenerator {
             double thirdPersonOccurences = getPersonDistribution(news, thirdPersonPattern)+getPersonDistribution(news, exclusivethirdPluralPersonPattern);
             double averageSentenceLength = getAverageSentenceLength(news);
             double repetitiveness = getRepetitiveness(news);
+            int authorHits = getGoogleHits(news);
 
 
             //TODO Ich bekomm die getNumberOfAuthors Methode nicht zu laufen. Gibt mir immer ne NullPointerException raus
@@ -62,7 +66,7 @@ public class DatabaseGenerator {
 
                 Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -203,5 +207,42 @@ public class DatabaseGenerator {
         }
         return (double)uniqueWords.size()/getCountOfWords(news);
     }
+
+    public static int getGoogleHits(NewsArticle news) throws IOException {
+
+        String GOOGLE_SEARCH_URL = "https://www.google.com/search";
+
+        if (!news.author.isEmpty()) {
+
+            String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + news.author.get(0) + "\"";
+            System.out.println(searchURL);
+            org.jsoup.nodes.Document doc = Jsoup.connect(searchURL).userAgent("Chrome/41.0.2228.0").get();
+            org.jsoup.nodes.Element hitResult = doc.select("#resultStats").first();
+            String hitText = hitResult.text().replace(".", "");
+
+            String hits = null;
+            if (hitText.split(" ").length == 3) {
+                hits = hitText.split(" ")[1].replace(".", "");
+            } else if (hitText.split(" ").length == 2) {
+                hits = hitText.split(" ")[0].replace(".", "");
+            }
+
+
+            int hitNumber = 0;
+            if (!(hits == null)) {
+                hitNumber = Integer.parseInt(hits);
+            } else {
+                System.out.println("Autor hat keine Hits");
+                return 0;
+            }
+            System.out.println(hitNumber);
+            return hitNumber;
+        }
+        else{
+            System.out.println("Keine Autoren vorhanden");
+            return 0;
+        }
+    }
+
 }
 

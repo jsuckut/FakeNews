@@ -37,7 +37,7 @@ public class NewsArticle {
     public int externSources;
     public int usedImages;
     public String url;
-    public ArrayList<String> author;
+    public ArrayList<String> author = new ArrayList<String>();
     public int numberOfAuthors;
     public boolean isFake;
 
@@ -79,7 +79,6 @@ public class NewsArticle {
             //Auf einen klassischen Join wurde hier aber verzichtet und eine While-Schleife erstellt, welche sämtliche Autoren, welche am Artikel beteiligt waren, raussucht.
             PreparedStatement authorsStatement = con.prepareStatement("SELECT * FROM newsauthors WHERE newsID=" + newsID);
             ResultSet authorResult = authorsStatement.executeQuery();
-            ArrayList<String> author = new ArrayList<String>();
             while(authorResult.next()){
                 PreparedStatement getNamesStatement = con.prepareStatement("SELECT * FROM authors WHERE authorID=" + authorResult.getInt("authorID"));
                 ResultSet namesResult = getNamesStatement.executeQuery();
@@ -87,6 +86,7 @@ public class NewsArticle {
                     author.add(namesResult.getString("firstname")+" "+namesResult.getString("lastname"));
                 }
             }
+            System.out.println(author.toString());
             numberOfAuthors = author.size();
 
 //Konsolen-Outputs um die erfolgreiche Objekt-Erstellung zu überprüfen
