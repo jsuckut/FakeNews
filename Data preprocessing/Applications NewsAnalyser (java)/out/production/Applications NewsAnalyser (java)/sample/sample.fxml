@@ -35,6 +35,8 @@
       <Label fx:id="labelBiGramm" layoutX="551.0" layoutY="209.0" prefHeight="17.0" prefWidth="31.0" text="-" />
       <Label layoutX="320.0" layoutY="228.0" prefHeight="25.0" prefWidth="187.0" text="Anzahl N-Gramm - Trigramm:" />
       <Label fx:id="labelTriGramm" layoutX="546.0" layoutY="226.0" prefHeight="25.0" prefWidth="31.0" text="-" />
+      <Label layoutX="319.0" layoutY="251.0" prefHeight="25.0" prefWidth="187.0" text="Anzahl an Saetze" />
+      <Label fx:id="labelNumberOfSentence" layoutX="550.0" layoutY="253.0" prefHeight="27.0" prefWidth="31.0" text="-" />
 
    </children>
 </AnchorPane>

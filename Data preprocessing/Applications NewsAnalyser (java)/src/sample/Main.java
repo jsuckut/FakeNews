@@ -17,7 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import static sample.Controller.getNumberOfSentenceLength;
+import static sample.Controller.getNumberOfSentence;
 
 
 public class Main extends Application {
@@ -34,6 +34,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    String sText = "Abst.";
-    int a = getNumberOfSentenceLength(sText);
+
 }

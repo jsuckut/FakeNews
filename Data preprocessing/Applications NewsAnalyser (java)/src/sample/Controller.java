@@ -63,6 +63,9 @@ public class Controller {
     @FXML // The Label for number of TriGramm
     private Label labelTriGramm;
 
+    @FXML
+    private Label labelNumberOfSentence;
+
 
     public static Pattern firstPersonPattern = Pattern.compile("((\\bi\\b)|(\\bme\\b)|(\\bmy\\b)|(\\bmine\\b)|(\\bmyself\\b))", Pattern.CASE_INSENSITIVE);
     public static Pattern secondPersonPattern = Pattern.compile("((\\byou\\b)|(\\byour\\b)|(\\byour\\b)|(\\byourself\\b))", Pattern.CASE_INSENSITIVE);
@@ -101,6 +104,8 @@ public class Controller {
        String sBiGramm = Double.toString(getNumberofNGrammes(sNewsText, 2));
        String sTriGramm = Double.toString(getNumberofNGrammes(sNewsText, 3));
 
+       String sNumberOfSentence = Double.toString(getNumberOfSentence(sNewsText));
+
         // Print all information in the GUI
         labelWortCount.setText(sCountOfWord);
         labelUpperCaceCount.setText(sCountOfUpperCase);
@@ -112,6 +117,7 @@ public class Controller {
         labelThirdPersonCount.setText(sCountOfThirdPersonOccurences);
         labelBiGramm.setText(sBiGramm);
         labelTriGramm.setText(sTriGramm);
+        labelNumberOfSentence.setText(sNumberOfSentence);
     }
 
 
@@ -248,11 +254,13 @@ public class Controller {
     }
 
 
-
-
-    public static int getNumberOfSentenceLength(String sText){
+    /**
+     * Give the Number of Sentence
+     * @param sText
+     * @return
+     */
+    public static int getNumberOfSentence(String sText){
         int iSentencecount = 0;
-
 
         for(int iIndex = 0; iIndex < sText.length(); iIndex++) {
             char cLetter = sText.charAt(iIndex);
