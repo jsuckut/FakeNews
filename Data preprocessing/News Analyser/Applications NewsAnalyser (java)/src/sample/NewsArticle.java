@@ -87,10 +87,14 @@ public class NewsArticle {
                 }
             }
 
+
 //Konsolen-Outputs um die erfolgreiche Objekt-Erstellung zu überprüfen
             System.out.println("NewsArticles-Objekt mit ID=" + result.getString("newsID") + " erstellt.");
             System.out.println(title);
             System.out.println(author.toString());
+            result.close();
+            newsStatement.close();
+            con.close();
         }
 
     }

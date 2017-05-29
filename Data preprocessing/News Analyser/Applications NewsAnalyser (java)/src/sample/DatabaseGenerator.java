@@ -59,10 +59,18 @@ public class DatabaseGenerator {
             int authors = 1;
             // getNumberOfAuthors(news);
             int citations = getNumberOfCitations(news);
-            //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-            PreparedStatement InsertStatement = sqlConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " +firstPersonOccurences+ ", " +secondPersonOccurences+ ", " +thirdPersonOccurences+", "+averageSentenceLength+")");
-            result = InsertStatement.executeUpdate();
+
+
+                Connection updateConnection = NewsArticle.getConnection();
+                //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ")");
+                insertStatement.executeUpdate();
+
+            insertStatement.close();
+            updateConnection.close();
         }
+
+
 
     }
 
