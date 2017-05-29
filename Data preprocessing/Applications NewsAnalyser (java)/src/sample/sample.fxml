@@ -33,6 +33,8 @@
       <Label fx:id="labelThirdPersonCount" layoutX="546.0" layoutY="190.0" prefHeight="17.0" prefWidth="38.0" text="-" />
       <Label layoutX="319.0" layoutY="208.0" prefHeight="17.0" prefWidth="197.0" text="Anzahl N-Gramm - Bigramm:" />
       <Label fx:id="labelBiGramm" layoutX="551.0" layoutY="209.0" prefHeight="17.0" prefWidth="31.0" text="-" />
+      <Label layoutX="320.0" layoutY="228.0" prefHeight="25.0" prefWidth="187.0" text="Anzahl N-Gramm - Trigramm:" />
+      <Label fx:id="labelTriGramm" layoutX="546.0" layoutY="226.0" prefHeight="25.0" prefWidth="31.0" text="-" />
 
    </children>
 </AnchorPane>

@@ -60,6 +60,8 @@ public class Controller {
     @FXML // The Label for number of BiGramm
     private Label labelBiGramm;
 
+    @FXML // The Label for number of TriGramm
+    private Label labelTriGramm;
 
 
     public static Pattern firstPersonPattern = Pattern.compile("((\\bi\\b)|(\\bme\\b)|(\\bmy\\b)|(\\bmine\\b)|(\\bmyself\\b))", Pattern.CASE_INSENSITIVE);
@@ -97,6 +99,7 @@ public class Controller {
         String sCountOfThirdPersonOccurences = Double.toString(getPersonDistribution(sNewsText,thirdPersonPattern)+getPersonDistribution(sNewsText,exclusiveThirdPluralPersonPattern));
 
        String sBiGramm = Double.toString(getNumberofNGrammes(sNewsText, 2));
+       String sTriGramm = Double.toString(getNumberofNGrammes(sNewsText, 3));
 
         // Print all information in the GUI
         labelWortCount.setText(sCountOfWord);
@@ -108,9 +111,9 @@ public class Controller {
         labelSecondPersonCount.setText(sCountOfSecondPersonOccurences);
         labelThirdPersonCount.setText(sCountOfThirdPersonOccurences);
         labelBiGramm.setText(sBiGramm);
-
-
+        labelTriGramm.setText(sTriGramm);
     }
+
 
     /**
      * This method count the number of words in a given string.
@@ -206,7 +209,6 @@ public class Controller {
         while (personMatcher.find())
             PersonOccurrence++;
         return PersonOccurrence / (double) getCountOfWords(sText);
-
     }
 
 
@@ -241,10 +243,8 @@ public class Controller {
             while(ngramSize>0){ ngramSize--;
                 it.next();
             }
-
         }
         return AListNGramms.size();
-
     }
 
 
