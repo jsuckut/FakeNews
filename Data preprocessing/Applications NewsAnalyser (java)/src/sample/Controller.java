@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
-import java.util.StringTokenizer;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -205,5 +205,57 @@ public class Controller {
         return PersonOccurrence / (double) getCountOfWords(sText);
 
     }
+
+
+    /**
+     * This method count number of N-Grammes of given Degree of - Gramms.
+     * Basis function
+     * @param sText
+     * @param iMaxNGramSize
+     * @return Number of N-Gramms
+     * @soruce: The source give an idear how to implements the n-Gramms:
+     * https://stackoverflow.com/questions/3656762/n-gram-generation-from-a-sentence
+     * @source: For Backround Knowloage http://wiki.languagetool.org/java-spell-
+     * @author: Benjamin M. Abdel-Karim
+     */
+
+    public static int getNumberofNGrammes(String sText, int iMaxNGramSize) {
+        List<String> sentence = Arrays.asList(sText.split("[\\W+]"));
+        List<String> AListNGramms = new ArrayList<String>();
+        int ngramSize = 0;
+        StringBuilder SBText = null;
+        //sentence becomes ngrams
+        for (ListIterator<String> it = sentence.listIterator(); it.hasNext();) { String word = (String) it.next();
+            //1- add the word itself
+            SBText = new StringBuilder(word); AListNGramms.add(word); ngramSize=1;
+            it.previous();
+            //2- insert prevs of the word and add those too
+            while(it.hasPrevious() && ngramSize<iMaxNGramSize){ SBText.insert(0,' ');
+                SBText.insert(0,it.previous()); AListNGramms.add(SBText.toString());
+                ngramSize++;
+            }
+            //go back to initial position
+            while(ngramSize>0){ ngramSize--;
+                it.next();
+            }
+
+            System.out.println(AListNGramms.size());
+
+        }
+        return AListNGramms.size();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
