@@ -258,6 +258,7 @@ public class Controller {
      * Give the Number of Sentence
      * @param sText
      * @return
+     * @Author: Benjamin M. Abdel-Karim
      */
     public static int getNumberOfSentence(String sText){
         int iSentencecount = 0;
