@@ -2,7 +2,10 @@
 
 import org.jsoup.Jsoup;
 
+import javax.lang.model.util.Elements;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,6 +48,7 @@ public class DatabaseGenerator {
         ResultSet resultSet = getAllIdsStatement.executeQuery();
 //In dieser Schleife werden alle NewsArticle nacheinander aufgerufen und unsere Parameter für sie berechnet.
         while (resultSet.next()) {
+
             NewsArticle news = new NewsArticle(resultSet.getInt("newsID"));
             boolean isFake = news.isFake;
             int words = getCountOfWords(news);
@@ -208,38 +212,38 @@ public class DatabaseGenerator {
         return (double)uniqueWords.size()/getCountOfWords(news);
     }
 
-    public static int getGoogleHits(NewsArticle news) throws IOException {
+    public static int getGoogleHits(NewsArticle news) throws IOException, URISyntaxException {
 
         String GOOGLE_SEARCH_URL = "https://www.google.com/search";
+        String newsSite = news.getUrl().split("/")[2];
 
-        if (!news.author.isEmpty()) {
+        int hitNumber = 0;
+        for (String author : news.author) {
 
-            String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + news.author.get(0) + "\"";
+            String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + author.replace(" ", "+") + "\" " + newsSite + "&gws_rd=cr&ei=NEIsWe-PNcqWgAbjrr7oDQ";
             System.out.println(searchURL);
             org.jsoup.nodes.Document doc = Jsoup.connect(searchURL).userAgent("Chrome/41.0.2228.0").get();
             org.jsoup.nodes.Element hitResult = doc.select("#resultStats").first();
-            String hitText = hitResult.text().replace(".", "");
+            String hitText = hitResult.text().replace(",", "");
 
             String hits = null;
             if (hitText.split(" ").length == 3) {
-                hits = hitText.split(" ")[1].replace(".", "");
+                hits = hitText.split(" ")[1].replace(",", "");
             } else if (hitText.split(" ").length == 2) {
-                hits = hitText.split(" ")[0].replace(".", "");
+                hits = hitText.split(" ")[0].replace(",", "");
             }
 
-
-            int hitNumber = 0;
+            hitNumber = 0;
             if (!(hits == null)) {
-                hitNumber = Integer.parseInt(hits);
+                hitNumber += Integer.parseInt(hits);
             } else {
                 System.out.println("Autor hat keine Hits");
-                return 0;
             }
-            System.out.println(hitNumber);
-            return hitNumber;
+        }
+        if(!news.author.isEmpty()) {
+            return hitNumber / news.author.size();
         }
         else{
-            System.out.println("Keine Autoren vorhanden");
             return 0;
         }
     }
