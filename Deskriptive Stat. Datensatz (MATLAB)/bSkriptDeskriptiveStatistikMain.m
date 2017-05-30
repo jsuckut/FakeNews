@@ -9,11 +9,11 @@ clear; clc; close all;
 addpath('Funktionsbibliothek');
 addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 
-%% Der Datenimport
+%% Dataimport 
 % Der Datenimport aus der Datei.
 % Aufbau der Tabelle: 
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits'};;
-mData = csvread('2017-05-30-newsResults.csv');
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits'};
+mData = csvread('Datenbank/2017-05-30-newsResults.csv');
 
 %% Datensatzaufteilung
 lIsFake =  mData(:,2)== 1;
@@ -25,9 +25,9 @@ mDataIsNotFake = mData(~ lIsFake,:);
 % Uebergabe der Daten in die Statistik Funktion
 [mDeskriptiveStatistik, cDeskriptiveStatistik]=fDeskriptiveStatistik(mData,sVar);
 
-% Tabelle Speichern
-dlmwrite('DeskriptiveStatistik.txt',mDeskriptiveStatistik);
-
+% Save the new Data in a file
+dlmwrite('Datenexporte/DeskriptiveStatistik.txt',mDeskriptiveStatistik);
+csvwrite('Datenexporte/DeskriptiveStatistik.csv',mDeskriptiveStatistik)
 
 %% Auswertung ist Fake
 % Aus dem Datenpaket die relevanten Informationen ziehen
