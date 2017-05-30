@@ -35,6 +35,10 @@ mdl = fitlm(vX ,vY);
 %mdl % Gibt die Daten direkt auf der Konsole aus.
 
 % Save the Date. Step one need to typcast the table object to a matrix.
+% The option setting the delimiter, and the precision!
+%@code: dlmwrite - For a lot of option by saving the data
 tCoefficients = mdl.Coefficients;
+format short
 mCoefficients = table2array(tCoefficients);
-csvwrite('Datenexporte/Coefficients.csv',mCoefficients);
+dlmwrite('Datenexporte/Coefficients.csv',mCoefficients,'-append','delimiter','\t','precision','%.6f');
+% csvwrite('Datenexporte/Coefficients.csv',mCoefficients);

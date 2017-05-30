@@ -63,7 +63,7 @@ vAnzahlWoeterIsNotFake = mDataIsNotFake(:,3);
 
 % Uebereinandergelegtes Histogramm
 figure
-dBlocks = 30;
+dBlocks = 50;
 h1 = histogram(vAnzahlWoeterIsFake, dBlocks);
 hold on
 h2 = histogram(vAnzahlWoeterIsNotFake, dBlocks);
