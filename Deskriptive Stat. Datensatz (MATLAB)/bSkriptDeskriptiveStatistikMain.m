@@ -28,7 +28,8 @@ mDataIsNotFake = mData(~ lIsFake,:);
 % Save the new Data in a file
 dlmwrite('Datenexporte/DeskriptiveStatistik.txt',mDeskriptiveStatistik);
 csvwrite('Datenexporte/DeskriptiveStatistik.csv',mDeskriptiveStatistik);
-csvwrite('Datenexporte/DeskriptiveStatistikTranspost.csv',mDeskriptiveStatistik');
+%csvwrite('Datenexporte/DeskriptiveStatistikTranspost.csv',mDeskriptiveStatistik');
+dlmwrite('Datenexporte/DeskriptiveStatistikTranspost.csv',mDeskriptiveStatistik,'-append','delimiter',',','precision','%.6f');
 
 %% Auswertung ist Fake
 % Aus dem Datenpaket die relevanten Informationen ziehen
