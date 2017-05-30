@@ -214,39 +214,44 @@ public class DatabaseGenerator {
 
     public static int getGoogleHits(NewsArticle news) throws IOException, URISyntaxException {
 
-        String GOOGLE_SEARCH_URL = "https://www.google.com/search";
+        String GOOGLE_SEARCH_URL = "https://www.bing.com/search";
         String newsSite = news.getUrl().split("/")[2];
 
         int hitNumber = 0;
         for (String author : news.author) {
 
-            String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + author.replace(" ", "+") + "\" " + newsSite + "&gws_rd=cr&ei=NEIsWe-PNcqWgAbjrr7oDQ";
+            String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + author.replace(" ", "+") + "\"+" + newsSite;
             System.out.println(searchURL);
             org.jsoup.nodes.Document doc = Jsoup.connect(searchURL).userAgent("Chrome/41.0.2228.0").get();
-            org.jsoup.nodes.Element hitResult = doc.select("#resultStats").first();
-            String hitText = hitResult.text().replace(",", "");
+            if (!doc.select(".sb_count").isEmpty()) {
+                org.jsoup.nodes.Element hitResult = doc.select(".sb_count").first();
 
-            String hits = null;
-            if (hitText.split(" ").length == 3) {
-                hits = hitText.split(" ")[1].replace(",", "");
-            } else if (hitText.split(" ").length == 2) {
-                hits = hitText.split(" ")[0].replace(",", "");
-            }
+                String hitText = hitResult.text().replace(".", "");
 
-            hitNumber = 0;
-            if (!(hits == null)) {
-                hitNumber += Integer.parseInt(hits);
+                String hits = null;
+                if (hitText.split(" ").length == 3) {
+                    hits = hitText.split(" ")[1];
+                } else if (hitText.split(" ").length == 2) {
+                    hits = hitText.split(" ")[0];
+                }
+
+                hitNumber = 0;
+                if (!(hits == null)) {
+                    hitNumber += Integer.parseInt(hits);
+                } else {
+                    System.out.println("Autor hat keine Hits");
+                }
             } else {
-                System.out.println("Autor hat keine Hits");
+
+            }
+            if (!news.author.isEmpty()) {
+                System.out.println(hitNumber / news.author.size());
+                return hitNumber / news.author.size();
+            } else {
+                return 0;
             }
         }
-        if(!news.author.isEmpty()) {
-            return hitNumber / news.author.size();
-        }
-        else{
-            return 0;
-        }
+        return hitNumber;
     }
-
 }
 
