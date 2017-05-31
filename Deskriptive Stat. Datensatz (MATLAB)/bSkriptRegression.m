@@ -20,6 +20,8 @@ vX = mData(:,3:end);
 % Baseline Regression in MATLAB 
 [b,bint,r,rint,stats] = regress(vY,vX);
 
+% https://de.mathworks.com/help/stats/regress.html
+
 %% The Regression with regstats - Typ 2 Code
 sRegression = regstats(vY,vX,'linear');
 vBeta = sRegression.beta;
