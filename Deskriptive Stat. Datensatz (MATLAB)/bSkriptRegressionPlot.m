@@ -14,8 +14,8 @@ addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 
 %% Dataimport 
 % The Dataimport
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits'};
-mData = csvread('Datenbank/2017-05-30-newsResults.csv');
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','sentiment'};
+mData = csvread('Datenbank/2017-05-17-newsResults.csv');
 
 %% The Regression Parameters
 %vY = mData(:,2);

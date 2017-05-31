@@ -2,15 +2,16 @@
 % This skript realse the regression.
 % @Author: Benjamin M. Abdel-Karim
 % @since: 2017-05-30
-% @version: 2017-05-30
+% @version: 2017-05-31
 
 %% Clear everthing
 clear; clc; close all;
 
 %% Dataimport 
 % The Dataimport
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits'};
-mData = csvread('Datenbank/2017-05-30-newsResults.csv');
+%newsId,isFake,words,uppercases,questions,exclamations,authors,citations,firstperson,secondperson,thirdperson,sentencelength,repetitiveness,authorHits,sentiment
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','sentiment'};
+mData = csvread('Datenbank/2017-05-17-newsResults.csv');
 
 %% The Regression Parameters
 vY = mData(:,2);
