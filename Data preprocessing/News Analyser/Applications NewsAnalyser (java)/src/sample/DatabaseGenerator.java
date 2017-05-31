@@ -1,5 +1,3 @@
-
-
 import org.jsoup.Jsoup;
 
 import edu.stanford.nlp.ling.CoreAnnotations.*;
@@ -48,7 +46,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4)), sentiment decimal (6,5))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -77,7 +75,7 @@ public class DatabaseGenerator {
 
                 Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel+sentiment+ ")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment+ ")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
