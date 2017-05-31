@@ -41,7 +41,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (4,3), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(4,2), repetitiveness decimal (4,3), authorHits int)");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -61,16 +61,15 @@ public class DatabaseGenerator {
             double averageSentenceLength = getAverageSentenceLength(news);
             double repetitiveness = getRepetitiveness(news);
             int authorHits = getGoogleHits(news);
-
-
-            //TODO Ich bekomm die getNumberOfAuthors Methode nicht zu laufen. Gibt mir immer ne NullPointerException raus
             int authors = news.numberOfAuthors;
             int citations = getNumberOfCitations(news);
+            double titleUppercase = isTitleUppercase(news);
+            double errorLevel = errorLevel(news);
 
 
                 Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel+ ")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -205,7 +204,6 @@ public class DatabaseGenerator {
     public static double getRepetitiveness(NewsArticle news){
         Set<String> uniqueWords = new HashSet<String>();
         String[] words = news.getContent().split(" ");
-        //noOWoInString.addAll(words);
         for(String wrd:words){
             uniqueWords.add(wrd);
         }
@@ -221,7 +219,6 @@ public class DatabaseGenerator {
         for (String author : news.author) {
 
             String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + author.replace(" ", "+") + "\"+" + newsSite;
-            System.out.println(searchURL);
             org.jsoup.nodes.Document doc = Jsoup.connect(searchURL).userAgent("Chrome/41.0.2228.0").get();
             if (!doc.select(".sb_count").isEmpty()) {
                 org.jsoup.nodes.Element hitResult = doc.select(".sb_count").first();
@@ -245,7 +242,6 @@ public class DatabaseGenerator {
 
             }
             if (!news.author.isEmpty()) {
-                System.out.println(hitNumber / news.author.size());
                 return hitNumber / news.author.size();
             } else {
                 return 0;
@@ -253,5 +249,23 @@ public class DatabaseGenerator {
         }
         return hitNumber;
     }
+
+    public static double isTitleUppercase(NewsArticle news){
+        String title = news.getTitle();
+
+        int iUpperCase = 0;
+        for (int i = 0; i < title.length(); i++) {
+            if (Character.isUpperCase(title.charAt(i))) {
+                iUpperCase++;
+            }
+        }
+        return (double) iUpperCase / (double) title.length();
+    }
+
+    public static double errorLevel(NewsArticle news) throws IOException {
+        return (double)LanguageChecker.getSpellingError(news.getContent())/getCountOfWords(news);
+    }
+
+
 }
 

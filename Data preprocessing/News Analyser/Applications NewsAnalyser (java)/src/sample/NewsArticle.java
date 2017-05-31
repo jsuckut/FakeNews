@@ -86,7 +86,6 @@ public class NewsArticle {
                     author.add(namesResult.getString("firstname")+" "+namesResult.getString("lastname"));
                 }
             }
-            System.out.println(author.toString());
             numberOfAuthors = author.size();
 
 //Konsolen-Outputs um die erfolgreiche Objekt-Erstellung zu überprüfen
