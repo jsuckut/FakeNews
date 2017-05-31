@@ -41,7 +41,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions int, exclamations int, authors int, citations int, firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -53,8 +53,8 @@ public class DatabaseGenerator {
             boolean isFake = news.isFake;
             int words = getCountOfWords(news);
             double uppercases = getNumberOfUpperCase(news);
-            int questions = getNumberOfQuestionMark(news);
-            int exclamations = getNumberOfExclamationMark(news);
+            double questions = getNumberOfQuestionMark(news);
+            double exclamations = getNumberOfExclamationMark(news);
             double firstPersonOccurences = getPersonDistribution(news, firstPersonPattern)+getPersonDistribution(news, firstPluralPersonPattern);
             double secondPersonOccurences = getPersonDistribution(news, secondPersonPattern)+getPersonDistribution(news, secondPluralPersonPattern);
             double thirdPersonOccurences = getPersonDistribution(news, thirdPersonPattern)+getPersonDistribution(news, exclusivethirdPluralPersonPattern);
@@ -62,7 +62,7 @@ public class DatabaseGenerator {
             double repetitiveness = getRepetitiveness(news);
             int authorHits = getGoogleHits(news);
             int authors = news.numberOfAuthors;
-            int citations = getNumberOfCitations(news);
+            double citations = getNumberOfCitations(news);
             double titleUppercase = isTitleUppercase(news);
             double errorLevel = errorLevel(news);
 
@@ -125,7 +125,7 @@ public class DatabaseGenerator {
      * @author: Hendrik Joentgen
      * @update: 2017-05-12
      */
-    public static int getNumberOfExclamationMark(NewsArticle news) {
+    public static double getNumberOfExclamationMark(NewsArticle news) {
         String sText = news.getContent();
         int iExclamationMark = 0;
         for (int i = 0; i < sText.length(); i++) {
@@ -133,7 +133,7 @@ public class DatabaseGenerator {
                 iExclamationMark++;
             }
         }
-        return iExclamationMark;
+        return (double)iExclamationMark/countSentences(news);
     }
 
 
@@ -145,7 +145,7 @@ public class DatabaseGenerator {
      * @author: Hendrik Joentgen
      * @update: 2017-05-12
      */
-    public static int getNumberOfQuestionMark(NewsArticle news) {
+    public static double getNumberOfQuestionMark(NewsArticle news) {
         String sText = news.getContent();
         int iQuestionMark = 0;
         for (int i = 0; i < sText.length(); i++) {
@@ -153,7 +153,7 @@ public class DatabaseGenerator {
                 iQuestionMark++;
             }
         }
-        return iQuestionMark;
+        return (double)iQuestionMark/countSentences(news);
     }
 
 
@@ -165,10 +165,10 @@ public class DatabaseGenerator {
      * @author: Hendrik Joentgen
      * @update: 2017-05-18
      */
-    public static int getNumberOfCitations(NewsArticle news) {
+    public static double getNumberOfCitations(NewsArticle news) {
         Pattern citations = Pattern.compile("\"[^\"]+\"");
         int splits = citations.split(news.getContent()).length;
-        return splits;
+        return (double)splits/countSentences(news);
     }
 
     /**
@@ -188,17 +188,20 @@ public class DatabaseGenerator {
 
     }
 
-
-    public static double getAverageSentenceLength(NewsArticle news) {
+    public static double countSentences(NewsArticle news){
         double sentenceCount = 0;
-
         for (int iIndex = 0; iIndex < news.getContent().length(); ++iIndex) {
             char cLetter = news.getContent().charAt(iIndex);
             if (cLetter == 46 || cLetter == 33 || cLetter == 63) {
                 sentenceCount++;
             }
         }
-        return (double) getCountOfWords(news) / sentenceCount;
+        return sentenceCount;
+    }
+
+
+    public static double getAverageSentenceLength(NewsArticle news) {
+       return (double) getCountOfWords(news) / countSentences(news);
     }
 
     public static double getRepetitiveness(NewsArticle news){
