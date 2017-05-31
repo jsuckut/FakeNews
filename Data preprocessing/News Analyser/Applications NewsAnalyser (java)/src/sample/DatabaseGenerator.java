@@ -2,6 +2,13 @@
 
 import org.jsoup.Jsoup;
 
+import edu.stanford.nlp.ling.CoreAnnotations.*;
+import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
+import edu.stanford.nlp.pipeline.*;
+import edu.stanford.nlp.sentiment.SentimentCoreAnnotations.*;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.util.PropertiesUtils;
 import javax.lang.model.util.Elements;
 import java.io.IOException;
 import java.net.URI;
@@ -41,7 +48,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4)), sentiment decimal (6,5))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -65,11 +72,12 @@ public class DatabaseGenerator {
             double citations = getNumberOfCitations(news);
             double titleUppercase = isTitleUppercase(news);
             double errorLevel = errorLevel(news);
+            double sentiment = getSentiment(news);
 
 
                 Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel+ ")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel+sentiment+ ")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -269,6 +277,42 @@ public class DatabaseGenerator {
         return (double)LanguageChecker.getSpellingError(news.getContent())/getCountOfWords(news);
     }
 
+    /**
+     * This method determines the overall sentiment of a NewsArticle object by using StanfordCoreNLP. The overall sentiment is average sentiment score of each sentence.
+     *
+     * @param news
+     * @return The sentiment of the whole NewsArtricle.
+     * @author: Joerg U. Suckut
+     * @update: 2017-05-31
+     */
+    public static double getSentiment(NewsArticle news){
+        String text = news.getContent();
+
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(PropertiesUtils.asProperties(
+                "annotators", "tokenize, ssplit, parse, sentiment",
+                "tokenize.language", "en"));
+
+        Annotation document = new Annotation(text);
+
+        pipeline.annotate(document);
+
+        List<CoreMap> sentences = document.get(SentencesAnnotation.class);
+
+        int sentiment = 0;
+        int i = 0;
+
+        for (CoreMap sentence : sentences) {
+            Tree tree = sentence.get(SentimentAnnotatedTree.class);
+            sentiment += (RNNCoreAnnotations.getPredictedClass(tree) - 2);
+            i++;
+
+            //System.out.println("Sentiment of the " + i + " sentence :" + (RNNCoreAnnotations.getPredictedClass(tree) - 2));
+            //System.out.println("Overall sentiment: " + sentiment);
+        }
+        double averageSentiment = ((double) sentiment / (double) i);
+
+        return averageSentiment;
+    }
 
 }
 
