@@ -53,7 +53,7 @@ figure;
 pie(dVerteilungIsFakeandNot);
 title('Verteilung der Nachrichten zwischen falschen und wahren Nachrichten');
 legend('wahr', 'falsch');
-% matlab2tikz('Abbildungen/VerteilungIsFakeNews.tex');
+matlab2tikz('Abbildungen/VerteilungIsFakeNews.tex');
 % print -dpdf Abbildungen/VerteilungIsFakeNews.pdf;
 
 
@@ -75,7 +75,7 @@ legend('Fake News','Keine Fake News');
 xlabel('Wortanzahl in einer Nachricht');
 ylabel('Relativer Anteil');
 title('Wortanzahl in Fake und nicht Fake News');
-% matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
+matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
 % print -dpdf Abbildungen/VerteilungIsFakeNewsAndNotFake.pdf;
 
 % Alternative Darstellung
@@ -99,7 +99,7 @@ title('Wortanzahl in den wahren Nachrichten');
 grid on;
 xlim([0 2000]);
 ylim([0 40]);
-% matlab2tikz('Abbildungen/VerteilungIsFakeNewsSubplotHistogramm.tex');
+matlab2tikz('Abbildungen/VerteilungIsFakeNewsSubplotHistogramm.tex');
 % print -dpdf Abbildung/Wortverteilung.pdf;
 
 %% Boxplotverteilung
