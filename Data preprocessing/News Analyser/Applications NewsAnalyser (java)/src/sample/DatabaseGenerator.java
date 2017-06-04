@@ -1,3 +1,6 @@
+import edu.stanford.nlp.ie.util.RelationTriple;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.naturalli.NaturalLogicAnnotations;
 import org.jsoup.Jsoup;
 
 import edu.stanford.nlp.ling.CoreAnnotations.*;
@@ -46,7 +49,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5), informativeness decimal (6,5))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -71,11 +74,12 @@ public class DatabaseGenerator {
             double titleUppercase = isTitleUppercase(news);
             double errorLevel = errorLevel(news);
             double sentiment = getSentiment(news);
+            double informativeness = (double) getInformationCount(news) / (double) words;
 
 
                 Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment+ ")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment + ", " + informativeness + ")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -312,5 +316,42 @@ public class DatabaseGenerator {
         return averageSentiment;
     }
 
+    /**
+     * This method determines the number of information contained in a text by using the OpenIE of the StanfordCoreNLP library.
+     *
+     * @param news
+     * @return The information count of the text.
+     * @author: Joerg U. Suckut
+     * @update: 2017-06-04
+     */
+    public static int getInformationCount(NewsArticle news){
+        String text = news.getContent();
+
+        // Create the Stanford CoreNLP pipeline
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(PropertiesUtils.asProperties(
+                "annotators", "tokenize,ssplit,pos,lemma,depparse,natlog,openie",
+                "tokenize.language", "en"));
+
+        // Annotate an example document.
+        Annotation doc = new Annotation(text);
+        pipeline.annotate(doc);
+
+        // Loop over sentences in the document
+        int informationCount = 0;
+        for (CoreMap sentence : doc.get(CoreAnnotations.SentencesAnnotation.class)) {
+            // Get the OpenIE triples for the sentence
+            Collection<RelationTriple> triples = sentence.get(NaturalLogicAnnotations.RelationTriplesAnnotation.class);
+            // Print the triples
+            for (RelationTriple triple : triples) {
+                // Count something as information when the confidence is above 0.8
+                if(triple.confidence > 0.8)
+                {
+                    informationCount++;
+                }
+                //System.out.println(triple.confidence + "\t" + triple.subjectLemmaGloss() + "\t" + triple.relationLemmaGloss() + "\t" + triple.objectLemmaGloss());
+            }
+        }
+        return informationCount;
+    }
 }
 
