@@ -10,8 +10,8 @@ clear; clc; close all;
 %% Dataimport 
 % The Dataimport
 %newsId,isFake,words,uppercases,questions,exclamations,authors,citations,firstperson,secondperson,thirdperson,sentencelength,repetitiveness,authorHits,sentiment
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','sentiment'};
-mData = csvread('Datenbank/2017-05-17-newsResults.csv');
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
+mData = csvread('Datenbank/2017-06-05newsResults.csv');
 
 %% The Regression Parameters
 vY = mData(:,2);
