@@ -5,61 +5,69 @@
 % v = vector
 % s = String
 % c = Cell-Array
+% @source: https://de.mathworks.com/help/stats/mnrfit.html
 % @author: Benjamin M. Abdel-Karim
 % @since: 2017-06-06
 % version 2017-06-06
 
+clear; clc; close all;
+addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 
 %% Import the actual data
 % Loading the data from sql Database csv export
+% Each vector in the matrix stands for the input:
+% 1 = 'newsId'
+% 2 = 'isFake'
+% 3 = 'words'
+% 4 = 'uppercases'
+% 5 = 'questions'
+% 6 = 'exclamations'
+% 7 = 'authors'
+% 8 = 'citations'
+% 9 = 'firstperson'
+% 10 = 'secondperson'
+% 11 = 'thirdperson'
+% 12 = 'sentencelength'
+% 13 = 'repetitiveness'
+% 14 = 'authorHits'
+% 15 = 'titleUppercase'
+% 16 = 'errorLevel'
+% 17 = 'sentiment'
+% 18 = 'informativeness'
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
+mData = csvread('Datenbank/2017-06-05newsResults.csv');
 
 %% Sort the data for regression
 % Sorts the data according to dependent (Y) and independent variables (X)
+vY = mData(:,2);
+mX = mData(:,3:end);
 
+%% Calculate the model
+% Use the function for the model - Old Version: 
+% @source: https://de.mathworks.com/help/stats/generalizedlinearmodel-class.html?searchHighlight=GeneralizedLinearModel&s_tid=doc_srchtitle
+cLogistischeRegression  = GeneralizedLinearModel.fit(mX,vY,'distr','binomial');
+
+
+
+%% Plot
+figure;
+surf(cLogistischeRegression.CoefficientCovariance);
+title('Koeffizienten Kovarianz Matrix');
+grid 'on';
+% Sava Data as TikZ
+matlab2tikz('Abbildungen/CoefficientCovarianceLogisticRegression.tex');
+xlabel('Variablen');
+ylabel('Variablen');
+% print -dpdf Abbildung/Wortverteilung.pdf;
 
 %% Export the regression results
+% Save the Date. Step one need to typecast the table object to a matrix.
+% The option setting the delimiter, and the precision!
+% @code: dlmwrite - For a lot of option by saving the data
+% ?code: '%.5f' - representation of accuracy
 
-
-
-
-%% Clear everthing
-clear; clc; close all;
-
-% %% Dataimport 
-% % The Dataimport
-% %newsId,isFake,words,uppercases,questions,exclamations,authors,citations,firstperson,secondperson,thirdperson,sentencelength,repetitiveness,authorHits,sentiment
-% sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
-% mData = csvread('Datenbank/2017-06-05newsResults.csv');
-% 
-% %% The Regression Parameters
-% vY = mData(:,2);
-% vX = mData(:,3:end);
-% 
-% %% The Multiple linear regression baseline - Typ 1 Code 
-% % Baseline Regression in MATLAB 
-% [b,bint,r,rint,stats] = regress(vY,vX);
-% 
-% % https://de.mathworks.com/help/stats/regress.html
-% 
-% %% The Regression with regstats - Typ 2 Code
-% sRegression = regstats(vY,vX,'linear');
-% vBeta = sRegression.beta;
-% vTstat = sRegression.tstat.t;
-% vPVal = sRegression.tstat.pval;
-% 
-% %% Linears Model Class Regression - Typ 3 Code
-% % An object comprising training data, model description, 
-% % diagnostic information, and fitted coefficients for a linear regression. 
-% % Predict model responses with the predict or feval methods.
-% % https://de.mathworks.com/help/stats/linearmodel-class.html#responsive_offcanvas
-% mdl = fitlm(vX ,vY);
-% %mdl % Gibt die Daten direkt auf der Konsole aus.
-% 
-% % Save the Date. Step one need to typcast the table object to a matrix.
-% % The option setting the delimiter, and the precision!
-% %@code: dlmwrite - For a lot of option by saving the data
-% tCoefficients = mdl.Coefficients;
-% format short
-% mCoefficients = table2array(tCoefficients);
-% dlmwrite('Datenexporte/LinearRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
+%mCoefficients = cLogistischeRegression.Coefficients;
+%dlmwrite('Datenexporte/MultinomialLogisticRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
 % % csvwrite('Datenexporte/Coefficients.csv',mCoefficients);
+
+
