@@ -54,20 +54,27 @@ figure;
 surf(cLogistischeRegression.CoefficientCovariance);
 title('Koeffizienten Kovarianz Matrix');
 grid 'on';
-% Sava Data as TikZ
-matlab2tikz('Abbildungen/CoefficientCovarianceLogisticRegression.tex');
 xlabel('Variablen');
 ylabel('Variablen');
+% Sava Data as TikZ
+%matlab2tikz('Abbildungen/CoefficientCovarianceLogisticRegression.tex');
 % print -dpdf Abbildung/Wortverteilung.pdf;
+
+%% Fisher's exact test
+% Aalso returns the significance level p of the test and a structure stats 
+% containing additional test results, including the odds ratio and its 
+% asymptotic confidence interval.
+% @code: https://de.mathworks.com/help/stats/fishertest.html#buh29pv-7
+%[h,p,stats] = fishertest(mX,'Tail','right','Alpha',0.01);
+
 
 %% Export the regression results
 % Save the Date. Step one need to typecast the table object to a matrix.
 % The option setting the delimiter, and the precision!
 % @code: dlmwrite - For a lot of option by saving the data
-% ?code: '%.5f' - representation of accuracy
-
-%mCoefficients = cLogistischeRegression.Coefficients;
-%dlmwrite('Datenexporte/MultinomialLogisticRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
-% % csvwrite('Datenexporte/Coefficients.csv',mCoefficients);
+% @writetable(cLogistischeRegression.Coefficients,'cLogistischeRegression.Coefficients.csv');
+% @code: '%.5f' - representation of accuracy
+mCoefficients = table2array(cLogistischeRegression.Coefficients);
+dlmwrite('Datenexporte/LogistischeRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
 
 
