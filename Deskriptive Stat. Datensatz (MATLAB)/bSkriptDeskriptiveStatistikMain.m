@@ -12,8 +12,8 @@ addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 %% Dataimport 
 % Der Datenimport aus der Datei.
 % Aufbau der Tabelle: 
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits'};
-mData = csvread('Datenbank/2017-05-30-newsResults.csv');
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
+mData = csvread('Datenbank/2017-06-05newsResults.csv');
 
 %% Datensatzaufteilung
 lIsFake =  mData(:,2)== 1;
