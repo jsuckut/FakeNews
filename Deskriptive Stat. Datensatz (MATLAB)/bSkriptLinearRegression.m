@@ -43,5 +43,5 @@ mdl = fitlm(vX ,vY);
 tCoefficients = mdl.Coefficients;
 format short
 mCoefficients = table2array(tCoefficients);
-dlmwrite('Datenexporte/Coefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
+dlmwrite('Datenexporte/LinearRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
 % csvwrite('Datenexporte/Coefficients.csv',mCoefficients);
