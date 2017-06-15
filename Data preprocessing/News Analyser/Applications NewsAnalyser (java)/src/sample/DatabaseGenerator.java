@@ -1,5 +1,6 @@
 import edu.stanford.nlp.ie.util.RelationTriple;
 import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.naturalli.NaturalLogicAnnotations;
 import org.jsoup.Jsoup;
 
@@ -36,20 +37,72 @@ public class DatabaseGenerator {
     public static Pattern firstPersonPattern = Pattern.compile("((\\bi\\b)|(\\bme\\b)|(\\bmy\\b)|(\\bmine\\b)|(\\bmyself\\b))", Pattern.CASE_INSENSITIVE);
     public static Pattern secondPersonPattern = Pattern.compile("((\\byou\\b)|(\\byour\\b)|(\\byour\\b)|(\\byourself\\b))", Pattern.CASE_INSENSITIVE);
     public static Pattern thirdPersonPattern = Pattern.compile("((\\bhe\\b)|(\\bhim\\b)|(\\bhis\\b)|(\\bhimself\\b)|(\\bshe\\b)|(\\bher\\b)|(\\bhers\\b)|(\\bherself\\b)|(\\bit\\b)|(\\bits\\b)|(\\bhimself\\b)|(\\bitself\\b))", Pattern.CASE_INSENSITIVE);
-    public static Pattern firstPluralPersonPattern = Pattern.compile("((\\bwe\\b)|(\\bus\\b)|(\\bour\\b)|(\\bours\\b)|(\\bourself\\b))", Pattern.CASE_INSENSITIVE);
+    public static Pattern firstPluralPersonPattern = Pattern.compile("((\\bwe\\b)|(\\bus\\b)|(\\bour\\b)|(\\bours\\b)|(\\bourselves\\b))", Pattern.CASE_INSENSITIVE);
     public static Pattern secondPluralPersonPattern = Pattern.compile("((\\byou\\b)|(\\byour\\b)|(\\byour\\b)|(\\byourselves\\b))", Pattern.CASE_INSENSITIVE);
     public static Pattern thirdPluralPersonPattern = Pattern.compile("((\\bthey\\b)|(\\bthem\\b)|(\\btheir\\b)|(\\bthemselves\\b))", Pattern.CASE_INSENSITIVE);
     public static Pattern exclusivethirdPluralPersonPattern = Pattern.compile("(\byourselves\b)", Pattern.CASE_INSENSITIVE);
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
+        try {
+            //createDatabase();
+            updateDatabase();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateDatabase() throws Exception {
+        Connection sqlConnection = NewsArticle.getConnection();
+
+        PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
+        ResultSet resultSet = getAllIdsStatement.executeQuery();
+
+        while (resultSet.next()) {
+            NewsArticle news = new NewsArticle(resultSet.getInt("newsID"));
+
+            double firstPersonOccurences = getPersonDistribution(news, firstPersonPattern)+getPersonDistribution(news, firstPluralPersonPattern);
+
+            int words = getCountOfWords(news);
+            HashMap<String, Integer> postags = getPosTags(news);
+            double normalAdjectives;
+            double comparativeAdjectives;
+            double superlativeAdjectives;
+            if(postags.get("JJ") == null)
+                normalAdjectives = 0.0;
+            else
+                normalAdjectives = postags.get("JJ");
+            if(postags.get("JJR") == null)
+                comparativeAdjectives = 0.0;
+            else
+                comparativeAdjectives = postags.get("JJR");
+            if(postags.get("JJS") == null)
+                superlativeAdjectives = 0.0;
+            else
+                superlativeAdjectives = postags.get("JJS");
+            double superlativesPerWords = superlativeAdjectives / words;
+            double superlativesPerAdjectives = superlativeAdjectives / (normalAdjectives + comparativeAdjectives + superlativeAdjectives);
+
+
+            Connection updateConnection = NewsArticle.getConnection();
+            //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
+            PreparedStatement insertStatement = updateConnection.prepareStatement("UPDATE newsResults SET firstperson = " + firstPersonOccurences + ", superlativesPerWords = " + superlativesPerWords + ", superlativesPerAdjectives = " + superlativesPerAdjectives + "  WHERE newsId = " + resultSet.getInt("newsId") + ";");
+            insertStatement.executeUpdate();
+
+            insertStatement.close();
+            updateConnection.close();
+        }
+    }
+
+    public static void createDatabase() throws Exception {
 //SQL-Connection wird hergestellt
         Connection sqlConnection = NewsArticle.getConnection();
         //Die aktuelle Resultdatenbank wird gelöscht, sodass eine neue erstellt werden kann.
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5), informativeness decimal (6,5))");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5), informativeness decimal (6,5)), superlativesPerWords decimal (6,5), superlativesPerAdjectives decimal (6, 5)");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -75,11 +128,30 @@ public class DatabaseGenerator {
             double errorLevel = errorLevel(news);
             double sentiment = getSentiment(news);
             double informativeness = (double) getInformationCount(news) / (double) words;
+            HashMap<String, Integer> postags = getPosTags(news);
+            double normalAdjectives;
+            double comparativeAdjectives;
+            double superlativeAdjectives;
+            if(postags.get("JJ") == null)
+                normalAdjectives = 0.0;
+            else
+                normalAdjectives = postags.get("JJ");
+            if(postags.get("JJR") == null)
+                comparativeAdjectives = 0.0;
+            else
+                comparativeAdjectives = postags.get("JJR");
+            if(postags.get("JJS") == null)
+                superlativeAdjectives = 0.0;
+            else
+                superlativeAdjectives = postags.get("JJS");
+            double superlativesPerWords = superlativeAdjectives / words;
+            double superlativesPerAdjectives = superlativeAdjectives / (normalAdjectives + comparativeAdjectives + superlativeAdjectives);
 
 
-                Connection updateConnection = NewsArticle.getConnection();
+
+            Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment + ", " + informativeness + ")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment + ", " + informativeness + ", " + superlativesPerWords + ", " + superlativesPerAdjectives + ")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -352,6 +424,35 @@ public class DatabaseGenerator {
             }
         }
         return informationCount;
+    }
+
+    public static HashMap<String, Integer> getPosTags(NewsArticle news) {
+        // Create the Stanford CoreNLP pipeline
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(PropertiesUtils.asProperties(
+                "annotators", "tokenize,ssplit,pos",
+                "tokenize.language", "en"));
+
+        // Annotate an example document.
+        Annotation doc = new Annotation(news.getContent());
+        pipeline.annotate(doc);
+
+        HashMap<String, Integer> postags = new HashMap<>();
+
+        List<CoreMap> sentences = doc.get(CoreAnnotations.SentencesAnnotation.class);
+        for(CoreMap sentence : sentences){
+            for(CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class)){
+                //String word = token.get(CoreAnnotations.TextAnnotation.class);
+                String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+
+                if(postags.get(pos) == null)
+                    postags.put(pos, 1);
+                else
+                    postags.put(pos, postags.get(pos) + 1);
+                //System.out.println(word + "/" + pos);
+            }
+        }
+
+        return postags;
     }
 }
 
