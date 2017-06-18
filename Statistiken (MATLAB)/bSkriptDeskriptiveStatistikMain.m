@@ -12,8 +12,8 @@ addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 %% Dataimport 
 % Der Datenimport aus der Datei.
 % Aufbau der Tabelle: 
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
-mData = csvread('Datenbank/2017-06-05newsResults.csv');
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness','superlativesPerWords','superlativesPerAdjectives'};
+mData = csvread('Datenbank/2017-07-18-newsResults.csv');
 
 %% Datensatzaufteilung
 lIsFake =  mData(:,2)== 1;
@@ -25,11 +25,16 @@ mDataIsNotFake = mData(~ lIsFake,:);
 % Uebergabe der Daten in die Statistik Funktion
 [mDeskriptiveStatistik, cDeskriptiveStatistik]=fDeskriptiveStatistik(mData,sVar);
 
-% Save the new Data in a file
-dlmwrite('Datenexporte/DeskriptiveStatistik.txt',mDeskriptiveStatistik);
-csvwrite('Datenexporte/DeskriptiveStatistik.csv',mDeskriptiveStatistik);
+
+TDeskriptiveStatistik = cell2table(cDeskriptiveStatistik');
+% Save the Data @code 'WriteRowNames',1 right down the Values
+writetable(TDeskriptiveStatistik,'Datenexporte/DeskriptiveStatistikT.csv','WriteRowNames',1);
+
+% Old Protocolls - Save the new Data in a file
+%dlmwrite('Datenexporte/DeskriptiveStatistik.txt',mDeskriptiveStatistik);
+%csvwrite('Datenexporte/DeskriptiveStatistik.csv',mDeskriptiveStatistik);
 %csvwrite('Datenexporte/DeskriptiveStatistikTranspost.csv',mDeskriptiveStatistik');
-dlmwrite('Datenexporte/DeskriptiveStatistikTranspost.csv',mDeskriptiveStatistik','delimiter',',','precision','%.2f');
+%dlmwrite('Datenexporte/DeskriptiveStatistikTranspost.csv',mDeskriptiveStatistik','delimiter',',','precision','%.2f');
 
 %% Auswertung ist Fake
 % Aus dem Datenpaket die relevanten Informationen ziehen

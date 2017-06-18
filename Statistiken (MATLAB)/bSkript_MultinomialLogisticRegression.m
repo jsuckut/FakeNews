@@ -35,8 +35,11 @@ addpath('Funktionsbibliothek');
 % 16 = 'errorLevel'
 % 17 = 'sentiment'
 % 18 = 'informativeness'
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
-mData = csvread('Datenbank/2017-06-05newsResults.csv');
+% 19 = 'superlativesPerWords'
+% 20 = 'superlativesPerAdjectives'
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness','superlativesPerWords','superlativesPerAdjectives'};
+mData = csvread('Datenbank/2017-07-18-newsResults.csv');
+
 
 %% Sort the data for regression
 % Sorts the data according to dependent (Y) and independent variables (X)
@@ -45,9 +48,89 @@ mX = mData(:,3:end);
 
 %% Correlation coefficients
 % [r, p] = corrcoef(x) Korrelationskoeffiziente und p-Werte berechnen 
-sNamesCorrelation = {'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'};
+sNamesCorrelation = {'words','uppercases','questions','exclamations','authors',...
+    'citations','firstperson','secondperson','thirdperson','sentencelength',...
+    'repetitiveness','authorHits','titleUppercase','errorLevel','sentiment',...
+    'informativeness','superlativesPerWords ','superlativesPerAdjectives'};
+
 [mR, mP] = corrcoef(mX);
 
+
+% Generate the crosscorrelation Matrix with p-Values...
+mRAndMP = [mR(1,:);
+           mP(1,:)
+           
+           mR(2,:);
+           mP(2,:)
+           
+           mR(3,:);
+           mP(3,:)
+           
+           mR(4,:);
+           mP(4,:)
+           
+           mR(5,:);
+           mP(5,:)
+           
+           mR(6,:);
+           mP(6,:)
+           
+           mR(7,:);
+           mP(7,:)
+           
+           mR(8,:);
+           mP(8,:)
+           
+           mR(9,:);
+           mP(9,:)
+           
+           mR(10,:);
+           mP(10,:)
+           
+           mR(11,:);
+           mP(11,:)
+           
+           mR(12,:);
+           mP(12,:)
+           
+           mR(13,:);
+           mP(13,:)
+           
+           mR(14,:);
+           mP(14,:)
+           
+           mR(15,:);
+           mP(15,:)
+           
+           mR(16,:);
+           mP(16,:)
+           
+           mR(17,:);
+           mP(17,:)
+           
+           mR(18,:);
+           mP(18,:)
+           ];
+
+
+ cNamesCorrelationAndPValues = {'words','p1','uppercases','p2','questions',...
+ 'p3','exclamations','p4','authors','p5','citations','p6','firstperson','p7','secondperson','p8','thirdperson',...
+   'p9','sentencelength','p10','repetitiveness','p11','authorHits','p12','titleUppercase',...
+  'p13','errorLevel','p14','sentiment','p15','informativeness','p16','superlativesPerWords','p17','superlativesPerAdjectives','p18'};
+       
+ tCorrcoefAndPValues = table(mRAndMP(:,1),mRAndMP(:,2), mRAndMP(:,3),mRAndMP(:,4),...
+     mRAndMP(:,5), mRAndMP(:,6), mRAndMP(:,7), mRAndMP(:,8), mRAndMP(:,9), mRAndMP(:,10),...
+     mRAndMP(:,11),mRAndMP(:,12),mRAndMP(:,13),mRAndMP(:,14),mRAndMP(:,15),mRAndMP(:,16),...
+     mRAndMP(:,17),mRAndMP(:,18),'RowNames',cNamesCorrelationAndPValues,...
+     'VariableNames',{'words','uppercases','questions',...
+    'exclamations','authors','citations','firstperson','secondperson','thirdperson',...
+    'sentencelength','repetitiveness','authorHits','titleUppercase',...
+   'errorLevel','sentiment','informativeness','superlativesPerWords ','superlativesPerAdjectives'
+   });
+writetable(tCorrcoefAndPValues,'Datenexporte/tCorrcoefAndPValues.csv','WriteRowNames',1);
+writetable(tCorrcoefAndPValues,'Datenexporte/tCorrcoefAndPValues.xls','WriteRowNames',1);
+ 
+ 
     
 %% Calculate the model
 % Use the function for the model - Old Version: 
@@ -61,6 +144,7 @@ vBeta = table2array(cLogistischeRegression.Coefficients(2:end,1));
 vOddRatio = exp(vBeta);
 dlmwrite('Datenexporte/LogistischeRegressionOddRatio.csv',vOddRatio,'delimiter',',','precision','%.2f');
 
+
 %% Plot
 figure;
 surf(cLogistischeRegression.CoefficientCovariance);
@@ -70,7 +154,7 @@ xlabel('Variablen');
 ylabel('Variablen');
 view([-17 34]); % view adjust.
 % Sava Data as TikZ
-matlab2tikz('Abbildungen/CoefficientCovarianceLogisticRegression.tex');
+% matlab2tikz('Abbildungen/CoefficientCovarianceLogisticRegression.tex');
 % print -dpdf Abbildungen/Wortverteilung.pdf;
 
 %% Fisher's exact test
@@ -95,18 +179,28 @@ dlmwrite('Datenexporte/LogistischeRegressionCoefficients.csv',mCoefficients,'del
 % Save the informations as MATLAB-TABLE Object
 tcorrcoef = table(mR(:,1), mR(:,2), mR(:,3), mR(:,4), mR(:,5), mR(:,6), mR(:,7),...
     mR(:,8), mR(:,9), mR(:,10), mR(:,11), mR(:,12),  mR(:,13), mR(:,14), mR(:,15),...
-    mR(:,16),'RowNames',sNamesCorrelation, 'VariableNames',{'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'});
+    mR(:,16),mR(:,17),mR(:,18),'RowNames',sNamesCorrelation, 'VariableNames',{'words','uppercases','questions',...
+    'exclamations','authors','citations','firstperson','secondperson','thirdperson',...
+    'sentencelength','repetitiveness','authorHits','titleUppercase',...
+    'errorLevel','sentiment','informativeness','superlativesPerWords ','superlativesPerAdjectives'});
 % Save the Data @code 'WriteRowNames',1 right down the Values
 writetable(tcorrcoef,'Datenexporte/tcorrcoef.csv','WriteRowNames',1);
 writetable(tcorrcoef,'Datenexporte/tcorrcoef.xls','WriteRowNames',1);
 
 % Save the informations as MATLAB-TABLE Object
 tcorrcoef = table(mP(:,1), mP(:,2), mP(:,3), mP(:,4), mP(:,5), mP(:,6), mP(:,7),...
-    mP(:,8), mP(:,9), mP(:,10), mP(:,11), mP(:,12),  mP(:,13), mP(:,14), mP(:,15),...
-    mP(:,16),'RowNames',sNamesCorrelation, 'VariableNames',{'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness'});
+    mR(:,8), mR(:,9), mR(:,10), mR(:,11), mR(:,12),  mR(:,13), mR(:,14), mR(:,15),...
+    mR(:,16),mR(:,17),mR(:,18),'RowNames',sNamesCorrelation, 'VariableNames',{'words','uppercases','questions',...
+    'exclamations','authors','citations','firstperson','secondperson','thirdperson',...
+    'sentencelength','repetitiveness','authorHits','titleUppercase',...
+    'errorLevel','sentiment','informativeness','superlativesPerWords ','superlativesPerAdjectives'});
 % Save the Data
 writetable(tcorrcoef,'Datenexporte/tcorrcoefPValues.csv','WriteRowNames',1);
 writetable(tcorrcoef,'Datenexporte/tcorrcoefPValues.xls','WriteRowNames',1);
+
+
+
+
 
 figure1 = figure;
 axes1 = axes('Parent',figure1);
@@ -114,11 +208,17 @@ hold(axes1,'on');
 heatmap(mR, sNamesCorrelation, sNamesCorrelation, '%0.5f'); %'TickAngle', 90, 'GridLines', ':'); %,'FontSize', 0.5);
   set(axes1,'CLim',[-0.790076280063972 1],'Layer','top',...
     'TickLabelInterpreter','none','XTick',...
-    [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16],'XTickLabel',...
-    {'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativ'},...
-    'XTickLabelRotation',90,'YTick',[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16],...
+    [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18],'XTickLabel',...
+    {'words','uppercases','questions','exclamations','authors','citations',...
+    'firstperson','secondperson','thirdperson','sentencelength','repetitiveness',...
+    'authorHits','titleUppercase','errorLevel','sentiment','informativ',...
+    'superlativesPerWords ','superlativesPerAdjectives'},...
+    'XTickLabelRotation',90,'YTick',[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ],...
     'YTickLabel',...
-    {'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativ'});
+    {'words','uppercases','questions','exclamations','authors','citations',...
+    'firstperson','secondperson','thirdperson','sentencelength','repetitiveness',...
+    'authorHits','titleUppercase','errorLevel','sentiment','informativ',...
+    'superlativesPerWords ','superlativesPerAdjectives'});
 title('Korrelationstabelle');
 %matlab2tikz('Abbildungen/Korrelationstabelle.tex');
 % print -dpdf Abbildungen/Korrelationstabelle.pdf;
@@ -130,11 +230,17 @@ hold(axes1,'on');
 heatmap(mP, sNamesCorrelation, sNamesCorrelation, '%0.4f'); %'TickAngle', 90, 'GridLines', ':'); %,'FontSize', 0.5);
   set(axes2,'CLim',[-0.790076280063972 1],'Layer','top',...
     'TickLabelInterpreter','none','XTick',...
-    [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16],'XTickLabel',...
-    {'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativ'},...
-    'XTickLabelRotation',90,'YTick',[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16],...
+        [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18],'XTickLabel',...
+    {'words','uppercases','questions','exclamations','authors','citations',...
+    'firstperson','secondperson','thirdperson','sentencelength','repetitiveness',...
+    'authorHits','titleUppercase','errorLevel','sentiment','informativ',...
+    'superlativesPerWords ','superlativesPerAdjectives'},...
+    'XTickLabelRotation',90,'YTick',[1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ],...
     'YTickLabel',...
-    {'words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativ'});
-title('Korrelationstabelle');
+    {'words','uppercases','questions','exclamations','authors','citations',...
+    'firstperson','secondperson','thirdperson','sentencelength','repetitiveness',...
+    'authorHits','titleUppercase','errorLevel','sentiment','informativ',...
+    'superlativesPerWords ','superlativesPerAdjectives'});
+title('P-Werte der Korrelationstabelle');
 %matlab2tikz('Abbildungen/KorrelationstabellePValues.tex');
 % print -dpdf Abbildungen/KorrelationstabellePValues.pdf;
