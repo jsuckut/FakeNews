@@ -8,14 +8,11 @@
 % @source: https://de.mathworks.com/help/stats/mnrfit.html
 % @author: Benjamin M. Abdel-Karim
 % @since: 2017-06-06
-% version 2017-06-06
+% version 2017-06-19
 
 clear; clc; close all;
 addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 addpath('Funktionsbibliothek');
-
-
-
 
 %% Import the actual data
 % Loading the data from sql Database csv export
@@ -40,7 +37,17 @@ addpath('Funktionsbibliothek');
 % 18 = 'informativeness'
 % 19 = 'superlativesPerWords'
 % 20 = 'superlativesPerAdjectives'
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations','authors','citations','firstperson','secondperson','thirdperson','sentencelength','repetitiveness','authorHits','titleUppercase','errorLevel','sentiment','informativeness','superlativesPerWords','superlativesPerAdjectives'};
+% 21 = 'usedsources'
+% 22 = 'internsources'
+% 23 = 'externsources'
+% 24 = 'usedimages'
+sVar = {'newsId','isFake','words','uppercases','questions','exclamations',...
+    'authors','citations','firstperson','secondperson','thirdperson',...
+    'sentencelength','repetitiveness','authorHits','titleUppercase',...
+    'errorLevel','sentiment','informativeness',...
+    'superlativesPerWords','superlativesPerAdjectives',...
+    'usedsources', 'internsources','externsources','usedimages'};
+   
 mData = csvread('Datenbank/2017-07-18-newsResults.csv');
 
 
