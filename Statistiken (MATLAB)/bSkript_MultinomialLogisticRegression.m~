@@ -44,8 +44,8 @@ addpath('Funktionsbibliothek');
 sVar = {'$X_{1}$ words','$X_{2}$ uppercases','$X_{3}$ questions',...
     '$X_{4}$ exclamations','$X_{5}$ authors','$X_{6}$ citations','$X_{7}$ firstperson','$X_{8}$ secondperson','thirdperson',...
     '$X_{9}$ sentencelength','$X_{10}$ repetitiveness','$X_{11}$ authorHits','$X_{13}$ titleUppercase',...
-    '$X_{14}$ errorLevel','$X_{15}$ sentiment','$X_{16}$ informativeness','$X_{17}$ super. per Words ','$X_{18}$ super. per Adj.'...
-      '$X_{19}$usedsources', '$X_{20}$internsources','$X_{21}$externsources','$X_{21}$usedimages'};
+    '$X_{14}$ errorLevel','$X_{15}$ sentiment','$X_{16}$ informativeness','$X_{17}$ superlativesPerWords ','superlativesPerAdjectives'...
+      'usedsources', 'internsources','externsources','usedimages'};
    
 mData = csvread('Datenbank/2017-06-20-newsResults.csv');
 
@@ -76,7 +76,7 @@ cLogistischeRegression  = GeneralizedLinearModel.fit(mX,vY,'distr','binomial');
 % @index: at 2:end, because B1 is the constant.
 vBeta = table2array(cLogistischeRegression.Coefficients(1:end,1));
 vOddRatio = exp(vBeta);
-%dlmwrite('Datenexporte/LogistischeRegressionOddRatio.csv',vOddRatio,'delimiter',',','precision','%.2f');
+dlmwrite('Datenexporte/LogistischeRegressionOddRatio.csv',vOddRatio,'delimiter',',','precision','%.2f');
 
 %% Give the Data
 
@@ -202,6 +202,8 @@ tCorrcoefAndPValues = table(mRAndMP(:,1),mRAndMP(:,2), mRAndMP(:,3),mRAndMP(:,4)
     'usedsources', 'internsources','externsources','usedimages'});
 
 writetable(tCorrcoefAndPValues,'Datenexporte/tCorrcoefAndPValues.csv','WriteRowNames',1);
+writetable(tCorrcoefAndPValues,'Datenexporte/tCorrcoefAndPValues.xls','WriteRowNames',1);
+
 
 % % mRAndMP Ausmessen
 % [dZeilen, dSpalten] = size(mRAndMP);
@@ -249,7 +251,7 @@ view([-17 34]); % view adjust.
 % @writetable(cLogistischeRegression.Coefficients,'cLogistischeRegression.Coefficients.csv');
 % @code: '%.5f' - representation of accuracy
 mCoefficients = table2array(cLogistischeRegression.Coefficients);
-%dlmwrite('Datenexporte/LogistischeRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
+dlmwrite('Datenexporte/LogistischeRegressionCoefficients.csv',mCoefficients,'delimiter',',','precision','%.5f');
 
 
 %% Export anthordes Values
@@ -264,8 +266,8 @@ tcorrcoef = table(mR(:,1), mR(:,2), mR(:,3), mR(:,4), mR(:,5), mR(:,6), mR(:,7),
       'usedsources', 'internsources','externsources','usedimages'});
   
 % Save the Data @code 'WriteRowNames',1 right down the Values
-%writetable(tcorrcoef,'Datenexporte/tcorrcoef.csv','WriteRowNames',1);
-%writetable(tcorrcoef,'Datenexporte/tcorrcoef.xls','WriteRowNames',1);
+writetable(tcorrcoef,'Datenexporte/tcorrcoef.csv','WriteRowNames',1);
+writetable(tcorrcoef,'Datenexporte/tcorrcoef.xls','WriteRowNames',1);
 
 % Save the informations as MATLAB-TABLE Object
 tcorrcoef = table(mP(:,1), mP(:,2), mP(:,3), mP(:,4), mP(:,5), mP(:,6), mP(:,7),...
@@ -277,8 +279,8 @@ tcorrcoef = table(mP(:,1), mP(:,2), mP(:,3), mP(:,4), mP(:,5), mP(:,6), mP(:,7),
     'errorLevel','sentiment','informativeness','superlativesPerWords ','superlativesPerAdjectives',...
       'usedsources', 'internsources','externsources','usedimages'});
 % Save the Data
-%writetable(tcorrcoef,'Datenexporte/tcorrcoefPValues.csv','WriteRowNames',1);
-%writetable(tcorrcoef,'Datenexporte/tcorrcoefPValues.xls','WriteRowNames',1);
+writetable(tcorrcoef,'Datenexporte/tcorrcoefPValues.csv','WriteRowNames',1);
+writetable(tcorrcoef,'Datenexporte/tcorrcoefPValues.xls','WriteRowNames',1);
 
 
 figure1 = figure;
