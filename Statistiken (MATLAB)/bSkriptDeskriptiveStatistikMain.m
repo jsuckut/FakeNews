@@ -12,7 +12,7 @@ addpath('Funktionsbibliothek/MATLAB2Tikiz/src');
 %% Dataimport 
 % Der Datenimport aus der Datei.
 % Aufbau der Tabelle: 
-sVar = {'newsId','isFake','words','uppercases','questions','exclamations',...
+sVar = {'words','uppercases','questions','exclamations',...
     'authors','citations','firstperson','secondperson','thirdperson',...
     'sentencelength','repetitiveness','authorHits','titleUppercase',...
     'errorLevel','sentiment','informativeness',...
@@ -24,17 +24,20 @@ mData = csvread('Datenbank/2017-06-19-newsResults.csv');
 %% Datensatzaufteilung
 lIsFake =  mData(:,2)== 1;
 mDataIsFake = mData(lIsFake,:);
-mDataIsNotFake = mData(~ lIsFake,:);
-% mDataIsNotFake = mData(mData(~lIsFake),:); % ~ = Ist Keine FakeNews
+mDataIsNotFake = mData(~ lIsFake,:); % ~ = Ist Keine FakeNews
+
 
 %% Deskriptive Statistik genierien
 % Uebergabe der Daten in die Statistik Funktion
-[mDeskriptiveStatistik, cDeskriptiveStatistik]=fDeskriptiveStatistik(mData,sVar);
+[mDeskriptiveStatistik, cDeskriptiveStatistik]=fDeskriptiveStatistik(mData(:,3:end),sVar);
 
 
 TDeskriptiveStatistik = cell2table(cDeskriptiveStatistik');
 % Save the Data @code 'WriteRowNames',1 right down the Values
 writetable(TDeskriptiveStatistik,'Datenexporte/DeskriptiveStatistikT.csv','WriteRowNames',1);
+
+
+
 
 % Old Protocolls - Save the new Data in a file
 %dlmwrite('Datenexporte/DeskriptiveStatistik.txt',mDeskriptiveStatistik);
@@ -64,7 +67,7 @@ figure;
 pie(dVerteilungIsFakeandNot);
 title('Verteilung der Nachrichten zwischen falschen und wahren Nachrichten');
 legend('wahr', 'falsch');
-matlab2tikz('Abbildungen/VerteilungIsFakeNews.tex');
+%matlab2tikz('Abbildungen/VerteilungIsFakeNews.tex');
 % print -dpdf Abbildungen/VerteilungIsFakeNews.pdf;
 
 
@@ -86,7 +89,7 @@ legend('Fake News','Keine Fake News');
 xlabel('Wortanzahl in einer Nachricht');
 ylabel('Relativer Anteil');
 title('Wortanzahl in Fake und nicht Fake News');
-matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
+%matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
 % print -dpdf Abbildungen/VerteilungIsFakeNewsAndNotFake.pdf;
 
 % Alternative Darstellung
@@ -110,7 +113,7 @@ title('Wortanzahl in den wahren Nachrichten');
 grid on;
 xlim([0 2000]);
 ylim([0 40]);
-matlab2tikz('Abbildungen/VerteilungIsFakeNewsSubplotHistogramm.tex');
+%matlab2tikz('Abbildungen/VerteilungIsFakeNewsSubplotHistogramm.tex');
 % print -dpdf Abbildung/Wortverteilung.pdf;
 
 %% Boxplotverteilung
