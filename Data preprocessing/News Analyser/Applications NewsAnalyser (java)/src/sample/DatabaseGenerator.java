@@ -45,8 +45,8 @@ public class DatabaseGenerator {
 
     public static void main(String[] args){
         try {
-            //createDatabase();
-            updateDatabase();
+            createDatabase();
+            //updateDatabase();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -271,14 +271,17 @@ public class DatabaseGenerator {
     }
 
     public static double countSentences(NewsArticle news){
-        double sentenceCount = 0;
-        for (int iIndex = 0; iIndex < news.getContent().length(); ++iIndex) {
-            char cLetter = news.getContent().charAt(iIndex);
-            if (cLetter == 46 || cLetter == 33 || cLetter == 63) {
-                sentenceCount++;
-            }
-        }
-        return sentenceCount;
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(PropertiesUtils.asProperties(
+                "annotators", "tokenize, ssplit, parse",
+                "tokenize.language", "en"));
+
+        Annotation document = new Annotation(news.getContent());
+
+        pipeline.annotate(document);
+
+        List<CoreMap> sentences = document.get(SentencesAnnotation.class);
+
+        return (double) sentences.size();
     }
 
 
