@@ -50,20 +50,14 @@ sVar = {'$X_{1}$ words','$X_{2}$ uppercases','$X_{3}$ questions',...
    
 mData = csvread('Datenbank/2017-06-21-newsResults.csv');
 
-
 %% Sort the data for regression
 % Sorts the data according to dependent (Y) and independent variables (X)
 vY = mData(:,2);
 mX = mData(:,3:end);
 
 
-
-
-
 %% Correlation coefficients
 % [r, p] = corrcoef(x) Korrelationskoeffiziente und p-Werte berechnen
-
-
 [mR, mP] = corrcoef(mX);
 
 %% Calculate the model
@@ -302,7 +296,7 @@ set(axes1,'CLim',[-0.790076280063972 1],'Layer','top',...
     'usedsources', 'internsources','externsources','usedimages'});
 title('Korrelationstabelle');
 %matlab2tikz('Abbildungen/Korrelationstabelle.tex');
-% print -dpdf Abbildungen/Korrelationstabelle.pdf;
+print -dpdf Abbildungen/Korrelationstabelle.pdf;
 
 figure2 = figure;
 axes2 = axes('Parent',figure2);
@@ -324,7 +318,7 @@ set(axes2,'CLim',[-0.790076280063972 1],'Layer','top',...
     'usedsources', 'internsources','externsources','usedimages'});
 title('p - Werte der Korrelationstabelle');
 %matlab2tikz('Abbildungen/PWerteDerKorrelationstabelle.tex');
-% print -dpdf Abbildungen/PWerteDerKorrelationstabelle.pdf;
+print -dpdf Abbildungen/PWerteDerKorrelationstabelle.pdf;
  
 
 % figure2 = figure;
