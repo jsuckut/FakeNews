@@ -45,8 +45,8 @@ public class DatabaseGenerator {
 
     public static void main(String[] args){
         try {
-            createDatabase();
-            //updateDatabase();
+            //createDatabase();
+            updateDatabase();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -62,32 +62,17 @@ public class DatabaseGenerator {
         while (resultSet.next()) {
             NewsArticle news = new NewsArticle(resultSet.getInt("newsID"));
 
-            double firstPersonOccurences = getPersonDistribution(news, firstPersonPattern)+getPersonDistribution(news, firstPluralPersonPattern);
-
             int words = getCountOfWords(news);
-            HashMap<String, Integer> postags = getPosTags(news);
-            double normalAdjectives;
-            double comparativeAdjectives;
-            double superlativeAdjectives;
-            if(postags.get("JJ") == null)
-                normalAdjectives = 0.0;
-            else
-                normalAdjectives = postags.get("JJ");
-            if(postags.get("JJR") == null)
-                comparativeAdjectives = 0.0;
-            else
-                comparativeAdjectives = postags.get("JJR");
-            if(postags.get("JJS") == null)
-                superlativeAdjectives = 0.0;
-            else
-                superlativeAdjectives = postags.get("JJS");
-            double superlativesPerWords = superlativeAdjectives / words;
-            double superlativesPerAdjectives = superlativeAdjectives / (normalAdjectives + comparativeAdjectives + superlativeAdjectives);
+
+            double usedsourcesPerWords = (double) news.getUsedSources() / (double) words;
+            double internsourcesPerWords = (double) news.getInternSources() / (double) words;
+            double externsourcesPerWords = (double) news.getExternSources() / (double) words;
+            double usedimgagesPerWords = (double) news.getUsedImages() / (double) words;
 
 
             Connection updateConnection = NewsArticle.getConnection();
             //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-            PreparedStatement insertStatement = updateConnection.prepareStatement("UPDATE newsResults SET firstperson = " + firstPersonOccurences + ", superlativesPerWords = " + superlativesPerWords + ", superlativesPerAdjectives = " + superlativesPerAdjectives + "  WHERE newsId = " + resultSet.getInt("newsId") + ";");
+            PreparedStatement insertStatement = updateConnection.prepareStatement("UPDATE newsResults SET usedsourcesPerWords = " + usedsourcesPerWords + ", internsourcesPerWords = " + internsourcesPerWords + ", externsourcesPerWords = " + externsourcesPerWords + ", usedimagesPerWords = " + usedimgagesPerWords + "  WHERE newsId = " + resultSet.getInt("newsId") + ";");
             insertStatement.executeUpdate();
 
             insertStatement.close();
@@ -102,7 +87,7 @@ public class DatabaseGenerator {
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
         int result = DropStatement.executeUpdate();
         //Hier wird die neue Datenbank erstellt, das SQL-Statement muss dann bei neuen Sachen immer erweitert werden.
-        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5), informativeness decimal (6,5)), superlativesPerWords decimal (6,5), superlativesPerAdjectives decimal (6, 5)");
+        PreparedStatement CreateStatement = sqlConnection.prepareStatement("CREATE TABLE newsResults (newsId int, isFake boolean, words int, uppercases DECIMAL (5,4), questions decimal(5,4), exclamations decimal(5,4), authors int, citations decimal(5,4), firstperson decimal(6,5), secondperson decimal(6,5), thirdperson decimal(6,5), sentencelength decimal(5,3), repetitiveness decimal (5,4), authorHits int, titleUppercase decimal(5,4), errorLevel decimal (5,4), sentiment decimal (6,5), informativeness decimal (6,5), superlativesPerWords decimal (6,5), superlativesPerAdjectives decimal (6, 5), usedsourcesPerWords decimal (6,5), internsourcesPerWords decimal(6,5), externsourcesPerWords decimal(6,5), usedimagesPerWords decimal(6,5))");
         result = CreateStatement.executeUpdate();
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
@@ -147,11 +132,15 @@ public class DatabaseGenerator {
             double superlativesPerWords = superlativeAdjectives / words;
             double superlativesPerAdjectives = superlativeAdjectives / (normalAdjectives + comparativeAdjectives + superlativeAdjectives);
 
+            double usedsourcesPerWords = (double) news.getUsedSources() / (double) words;
+            double internsourcesPerWords = (double) news.getInternSources() / (double) words;
+            double externsourcesPerWords = (double) news.getExternSources() / (double) words;
+            double usedimgagesPerWords = (double) news.getUsedImages() / (double) words;
 
 
             Connection updateConnection = NewsArticle.getConnection();
                 //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment + ", " + informativeness + ", " + superlativesPerWords + ", " + superlativesPerAdjectives + ")");
+                PreparedStatement insertStatement = updateConnection.prepareStatement("INSERT INTO newsResults values (" + resultSet.getInt("newsID") + ", " + isFake + ", " + words + ", " + uppercases + ", " + questions + ", " + exclamations + ", " + authors + ", " + citations + ", " + firstPersonOccurences + ", " + secondPersonOccurences + ", " + thirdPersonOccurences + ", " + averageSentenceLength + ", " +repetitiveness+", " +authorHits+ ", "+titleUppercase+", " +errorLevel + ", " + sentiment + ", " + informativeness + ", " + superlativesPerWords + ", " + superlativesPerAdjectives + ", " + usedsourcesPerWords + ", " + internsourcesPerWords + ", " + externsourcesPerWords + ", " + usedimgagesPerWords + ")");
                 insertStatement.executeUpdate();
 
             insertStatement.close();
