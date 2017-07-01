@@ -26,11 +26,18 @@ vSVMValues =  csvread('Datenbank/SVM.csv');
 vSVMValuesID = zeros(length(vSVMValues),1);
 vSVMValuesID = vSVMValuesID+2; % Index 2.
 
+% Entscheidungsbaeume
+vEntscheidungsbaeumeValues = csvread('Datenbank/DecisionTree.csv');
+vEntscheidungsbaeumeID = zeros(length(vEntscheidungsbaeumeValues),1);
+vEntscheidungsbaeumeID = vEntscheidungsbaeumeID+3; % Index 3.
+
+
 
 %% Setze das Ergebnisfeld zusammen
 % Das Ergebnisfeld fuer die Modelle wird zusammen gesetzt. 
 mData = [vNaiveBayesValues, vNaiveBayesID;
-        vSVMValues, vSVMValuesID
+        vSVMValues, vSVMValuesID;
+        vEntscheidungsbaeumeValues, vEntscheidungsbaeumeID
 ];
 
 
@@ -46,6 +53,5 @@ title('Trefferquote und Modellrobusheit');
 grid on;
 ylabel('Trefferqueto');
 xlabel('Modelle');
-xticklabels({'Naive Bayes', 'SVM'});
-% xticklabels({'LRM','SVM','ANN','Tree','LPT',});
+xticklabels({'Naive Bayes', 'SVM', 'Entscheidungsbaum'});
 matlab2tikz('Abbildungen/ModelleGueteUndRobustheit.tex');

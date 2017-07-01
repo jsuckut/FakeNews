@@ -136,8 +136,9 @@ legend('usedsources','internsources','externsources','usedimages');
 xlabel('Verteilung');
 ylabel('Anzahl');
 title('Quellen in falschen Nachrichten');
+xlim([1 45]);
+ylim([0 40]);
 grid on;
-
 subplot(2,1,2);
 histogram(vSourceIsNotFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
 hold on;

@@ -50,6 +50,7 @@ sVar = {'$X_{1}$ words','$X_{2}$ uppercases','$X_{3}$ questions',...
    
 mData = csvread('Datenbank/2017-06-21-newsResults.csv');
 
+
 %% Sort the data for regression
 % Sorts the data according to dependent (Y) and independent variables (X)
 vY = mData(:,2);
@@ -59,6 +60,7 @@ mX = mData(:,3:end);
 %% Correlation coefficients
 % [r, p] = corrcoef(x) Korrelationskoeffiziente und p-Werte berechnen
 [mR, mP] = corrcoef(mX);
+
 
 %% Calculate the model
 % Use the function for the model - Old Version:
@@ -74,7 +76,6 @@ vOddRatio = exp(vBeta);
 %dlmwrite('Datenexporte/LogistischeRegressionOddRatio.csv',vOddRatio,'delimiter',',','precision','%.2f');
 
 %% Give the Data
-
 % Konvenrtiere table to array (Matrix)
 mLogisticRegressValues = table2array(cLogistischeRegression.Coefficients);
 
@@ -197,24 +198,6 @@ tCorrcoefAndPValues = table(mRAndMP(:,1),mRAndMP(:,2), mRAndMP(:,3),mRAndMP(:,4)
     'usedsources', 'internsources','externsources','usedimages'});
 
 writetable(tCorrcoefAndPValues,'Datenexporte/tCorrcoefAndPValues.csv','WriteRowNames',1);
-
-% % mRAndMP Ausmessen
-% [dZeilen, dSpalten] = size(mRAndMP);
-% % Legt ein leeres Array fuer Strings an
-% sCorrTable= int2str(zeros(dZeilen, dSpalten));
-% % Verschachtelte for-Schleife die alles zusammenbaut.
-% for iIndex = 1 : dSpalten
-%     for jIndex = 1:dZeilen  
-%         if iIndex > jIndex
-%           mRAndMP(iIndex, jIndex) = 0; 
-%         end
-%     end
-% end
-
-
-
-
-
 
 
 %% Plot
