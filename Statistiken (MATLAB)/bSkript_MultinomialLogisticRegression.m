@@ -41,6 +41,7 @@ addpath('Funktionsbibliothek');
 % 20 = 'internsources'
 % 21 = 'externsources'
 % 22 = 'usedimages'
+
 sVar = {'$X_{1}$ words','$X_{2}$ uppercases','$X_{3}$ questions',...
     '$X_{4}$ exclamations','$X_{5}$ authors','$X_{6}$ citations',...
     '$X_{7}$ firstperson','$X_{8}$ secondperson', '$X_{9} $thirdperson',...
@@ -48,7 +49,7 @@ sVar = {'$X_{1}$ words','$X_{2}$ uppercases','$X_{3}$ questions',...
     '$X_{14}$ errorLevel','$X_{15}$ sentiment','$X_{16}$ informativeness','$X_{17}$ super. per Words ','$X_{18}$ super. per Adj.'...
       '$X_{19}$usedsources', '$X_{20}$internsources','$X_{21}$externsources','$X_{22}$usedimages'};
    
-mData = csvread('Datenbank/2017-06-21-newsResults.csv');
+mData = csvread('Datenbank/2017-07-02-newsResults.csv');
 
 
 %% Sort the data for regression

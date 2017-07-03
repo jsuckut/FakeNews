@@ -20,7 +20,7 @@ sVar = {'$X_{1}$ words','$X_{2}$ uppercases','$X_{3}$ questions',...
       '$X_{19}$usedsources', '$X_{20}$internsources','$X_{21}$externsources','$X_{22}$usedimages'};
    
 
-mData = csvread('Datenbank/2017-06-20-newsResults.csv');
+mData = csvread('Datenbank/2017-07-02-newsResults.csv');
 
 %% Datensatzaufteilung
 lIsFake =  mData(:,2)== 1;
@@ -66,7 +66,7 @@ dVerteilungIsFakeandNot = [dSumIsFakeTrue, dSumIsFakeFale];
 % Abbildung mit Beschriftung wird erstellt und als TikZ gespeichert.
 figure;
 pie(dVerteilungIsFakeandNot);
-title('Verteilung der Nachrichten zwischen falschen und wahren Nachrichten');
+title('Verteilung der Nachrichten zwischen Fake News und wahre Nachricht');
 legend('wahr', 'falsch');
 %matlab2tikz('Abbildungen/VerteilungIsFakeNews.tex');
 % print -dpdf Abbildungen/VerteilungIsFakeNews.pdf;
@@ -86,11 +86,11 @@ h2 = histogram(vAnzahlWoeterIsNotFake, dBlocks);
 h1.Normalization = 'probability';
 h2.Normalization = 'probability';
 grid on;
-legend('Fake News','Keine Fake News');
+legend('Fake News','wahre Nachricht');
 xlabel('Wortanzahl in einer Nachricht');
 ylabel('Relativer Anteil');
-title('Wortanzahl in Fake und nicht Fake News');
-%matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
+title('Wortanzahl in Fake News und wahre Nachricht');
+matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
 % print -dpdf Abbildungen/VerteilungIsFakeNewsAndNotFake.pdf;
 
 % Alternative Darstellung
@@ -125,56 +125,153 @@ vSourceIsNotFake = mDataIsNotFake(:,21:24);
 % 'FaceAlpha', 0.9, 'FaceColor',[0 0 0]); Farbe und Durchsichtigkeit 
 figure;
 subplot(2,1,1);
-histogram(vSourceIsFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+h1 = histogram(vSourceIsFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
 hold on;
-histogram(vSourceIsFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
+h2 = histogram(vSourceIsFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
 hold on; 
-histogram(vSourceIsFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
+h3 = histogram(vSourceIsFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
 hold on;
-histogram(vSourceIsFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
+h4 = histogram(vSourceIsFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
+h1.Normalization = 'probability'; % Normierung auf Prozent
+h2.Normalization = 'probability'; 
+h3.Normalization = 'probability'; 
+h4.Normalization = 'probability'; 
+ylim([0 1]);                      % Skalieren
+xlim([-1 45]);
+title('Quellen in Fake News');
 legend('usedsources','internsources','externsources','usedimages');
-xlabel('Verteilung');
-ylabel('Anzahl');
-title('Quellen in falschen Nachrichten');
+xlabel('Anzahl der jeweiligen Quellen');
+ylabel('Relativer Anteil');
 grid on;
 
 subplot(2,1,2);
-histogram(vSourceIsNotFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+h1=histogram(vSourceIsNotFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
 hold on;
-histogram(vSourceIsNotFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
+h2=histogram(vSourceIsNotFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
 hold on; 
-histogram(vSourceIsNotFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
+h3=histogram(vSourceIsNotFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
 hold on;
-histogram(vSourceIsNotFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
+h4=histogram(vSourceIsNotFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
+h1.Normalization = 'probability'; % Normierung auf Prozent
+h2.Normalization = 'probability'; 
+h3.Normalization = 'probability'; 
+h4.Normalization = 'probability'; 
+ylim([0 1]);                      % Skalieren
+xlim([-1 45]);
+title('Quellen wahre Nachricht');
 legend('usedsources','internsources','externsources','usedimages');
-xlabel('Verteilung');
-ylabel('Anzahl');
-title('Quellen in wahren Nachrichten');
+xlabel('Anzahl der jeweiligen Quellen');
+ylabel('Relativer Anteil');
 grid on;
-matlab2tikz('Abbildungen/VerteilungQuellen.tex');
+matlab2tikz('Abbildungen/VerteilungVonQuellen.tex');
 % print -dpdf Abbildung/Wortverteilung.pdf;
 
+%% Boxplot Verteilung
+figure
+
+subplot(2,1,1)
+boxplot(vSourceIsFake)%,'PlotStyle','compact')
+
+subplot(2,1,2)
+boxplot(vSourceIsNotFake) %,'PlotStyle','compact')
+
+
+%% Ribbson Plot verwenden
+% Ribbson 
 figure;
 ribbon(vSourceIsFake);
 xticklabels({'','usedsources','internsources','externsources','usedimages',''});
 view([39 26])
 colormap('gray')
-title('Quellen in Fake News');
+title('Quellen Fake News');
 grid on;
-matlab2tikz('Abbildungen/QuellenFakeNews.tex');
+%matlab2tikz('Abbildungen/QuellenFakeNews.tex');
 
 figure;
 ribbon(vSourceIsNotFake);
 xticklabels({'','usedsources','internsources','externsources','usedimages',''});
 view([39 26])
 colormap('gray')
-title('Quellen in den Not Fake News');
+title('Quellen wahre Nachricht');
 grid on;
 matlab2tikz('Abbildungen/QuellenNotFakeNews.tex');
 
-%% Boxplotverteilung
+%% VerteilungDerInternenQuellen
+% Sortierung der Datenfehler gem. Bedingungen bzgl. der Eigenschaften
+vInternAndExternSourceIsFake = mDataIsFake(:,22:23);
+vInternAndExternSourceIsNotFake = mDataIsNotFake(:,22:23);
 
-%vQuestionsmarkIsFake = mDataIsFake(:,5);
-%vQuestionsmarkIsNotFake = mDataIsNotFake(:,5);
-%histogram(mDataIsFake(:,5)); % Die Fragezeichen
+figure;
+subplot(2,1,1);
+title('Verwendete Interne- und Externequellen in Fake News')
+histogram(vInternAndExternSourceIsFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+hold on;
+histogram(vInternAndExternSourceIsFake(:,2),'FaceAlpha', 0.6, 'FaceColor',[0 0 0]);
+legend('Interne', 'Externe');
+%xlim([-1 40]);
+ylim([0 80]);
+grid on;
+
+subplot(2,1,2);
+title('Verwendete Interne- und Externequellen in News')
+histogram(vInternAndExternSourceIsNotFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+hold on;
+histogram(vInternAndExternSourceIsFake(:,2),'FaceAlpha', 0.6, 'FaceColor',[0 0 0]);
+legend('Interne', 'Externe');
+%xlim([-1 40]);
+ylim([0 80]);
+grid on;
+
+
+%% Autoren 
+vAutorenIsFake = mDataIsFake(:,7);
+vAutorenIsNotFake = mDataIsNotFake(:,7);
+
+figure;
+subplot(2,1,1);
+title('Anzahl der Autoren Fake News');
+histogram(vAutorenIsFake,'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+xlim([-1 10]);
+%ylim([0 80]);
+grid on;
+
+subplot(2,1,2);
+title('Anzahl der Autoren wahre Nachricht')
+histogram(vAutorenIsNotFake,'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+xlim([-1 10]);
+%ylim([0 80]);
+grid on;
+
+%% Uebereinandergelegtes Histogramm und auf den absoluten Anteil
+figure;
+title('Anzahl der Autoren in Fake News');
+histogram(vAutorenIsFake,'FaceAlpha', 0.4, 'FaceColor',[0 1 0]);
+hold on;
+histogram(vAutorenIsNotFake,'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
+grid on;
+legend('Fake News','Keine Fake News');
+xlabel('Autorenanzahl');
+ylabel('Anzahl der Nachrichten');
+xlim([-1 10]);
+title('Autorenanzahl in Fake und nicht Fake News');
+
+%% Uebereinandergelegtes Histogramm und auf den relativen Anteil 
+figure
+h1 = histogram(vAutorenIsFake);
+hold on
+h2 = histogram(vAutorenIsNotFake);
+xlim([-1 5])
+h1.Normalization = 'probability'; % Normierung auf den relativen Anteil...
+h2.Normalization = 'probability';
+grid on;
+legend('Fake News','wahre Nachricht');
+xlabel('Autorenanzahl');
+ylabel('Relativer Anteil');
+title('Autorenanzahl in Fake und wahre Nachricht');
+matlab2tikz('Abbildungen/VerteilungIsFakeNewsAndNotFake.tex');
+% print -dpdf Abbildungen/VerteilungIsFakeNewsAndNotFake.pdf;
+
+
+%% Boxplot-Darstellung
+% Der Quellenverteilung
 

@@ -11,144 +11,75 @@ width=6.028in,
 height=1.99in,
 at={(1.011in,3.406in)},
 scale only axis,
-xmin=-5,
+xmin=-1,
 xmax=45,
 xlabel style={font=\color{white!15!black}},
-xlabel={Verteilung},
+xlabel={Anzahl der jeweiligen Quellen},
 ymin=0,
-ymax=100,
+ymax=1,
 ylabel style={font=\color{white!15!black}},
-ylabel={Anzahl},
+ylabel={Relativer Anteil},
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Quellen in falschen Nachrichten},
+title={Quellen in Fake News},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot[ybar interval, fill=black, fill opacity=0.4, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	66\\
-0.5	21\\
-1.5	5\\
-2.5	1\\
-3.5	3\\
-4.5	1\\
-5.5	1\\
-6.5	0\\
-7.5	0\\
-8.5	0\\
-9.5	1\\
-10.5	0\\
-11.5	0\\
-12.5	0\\
-13.5	0\\
-14.5	0\\
-15.5	0\\
-16.5	0\\
-17.5	0\\
-18.5	0\\
-19.5	0\\
-20.5	0\\
-21.5	0\\
-22.5	0\\
-23.5	0\\
-24.5	0\\
-25.5	0\\
-26.5	0\\
-27.5	0\\
-28.5	0\\
-29.5	0\\
-30.5	0\\
-31.5	0\\
-32.5	0\\
-33.5	0\\
-34.5	0\\
-35.5	0\\
-36.5	0\\
-37.5	0\\
-38.5	0\\
-39.5	0\\
-40.5	0\\
-41.5	0\\
-42.5	1\\
-43.5	1\\
+0	0.79\\
+0.003	0.08\\
+0.006	0.08\\
+0.009	0.02\\
+0.012	0.02\\
+0.015	0\\
+0.018	0\\
+0.021	0\\
+0.024	0.01\\
+0.027	0.01\\
 };
 \addlegendentry{usedsources}
 
 \addplot[ybar interval, fill=black, fill opacity=0.3, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	80\\
-0.5	11\\
-1.5	3\\
-2.5	3\\
-3.5	0\\
-4.5	2\\
-5.5	0\\
-6.5	0\\
-7.5	0\\
-8.5	1\\
-9.5	1\\
+0	0.87\\
+0.003	0.02\\
+0.006	0.04\\
+0.009	0.03\\
+0.012	0.03\\
+0.015	0.01\\
+0.018	0.01\\
 };
 \addlegendentry{internsources}
 
 \addplot[ybar interval, fill=black, fill opacity=0.2, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	71\\
-0.5	15\\
-1.5	5\\
-2.5	4\\
-3.5	2\\
-4.5	0\\
-5.5	1\\
-6.5	0\\
-7.5	0\\
-8.5	0\\
-9.5	1\\
-10.5	0\\
-11.5	0\\
-12.5	0\\
-13.5	0\\
-14.5	0\\
-15.5	0\\
-16.5	0\\
-17.5	0\\
-18.5	0\\
-19.5	0\\
-20.5	0\\
-21.5	0\\
-22.5	0\\
-23.5	0\\
-24.5	0\\
-25.5	0\\
-26.5	0\\
-27.5	0\\
-28.5	0\\
-29.5	0\\
-30.5	0\\
-31.5	0\\
-32.5	0\\
-33.5	0\\
-34.5	0\\
-35.5	0\\
-36.5	0\\
-37.5	0\\
-38.5	0\\
-39.5	0\\
-40.5	0\\
-41.5	1\\
-42.5	1\\
+0	0.82\\
+0.003	0.07\\
+0.006	0.08\\
+0.009	0.01\\
+0.012	0.01\\
+0.015	0\\
+0.018	0\\
+0.021	0\\
+0.024	0.01\\
+0.027	0.01\\
 };
 \addlegendentry{externsources}
 
 \addplot[ybar interval, fill=black, fill opacity=0.1, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	4\\
-0.5	83\\
-1.5	9\\
-2.5	3\\
-3.5	1\\
-4.5	1\\
+0	0.35\\
+0.003	0.47\\
+0.006	0.1\\
+0.009	0.03\\
+0.012	0.01\\
+0.015	0.02\\
+0.018	0.01\\
+0.021	0\\
+0.024	0.01\\
+0.027	0.01\\
 };
 \addlegendentry{usedimages}
 
@@ -159,135 +90,88 @@ width=6.028in,
 height=1.99in,
 at={(1.011in,0.642in)},
 scale only axis,
-xmin=-5,
-xmax=40,
+xmin=-1,
+xmax=45,
 xlabel style={font=\color{white!15!black}},
-xlabel={Verteilung},
+xlabel={Anzahl der jeweiligen Quellen},
 ymin=0,
-ymax=60,
+ymax=1,
 ylabel style={font=\color{white!15!black}},
-ylabel={Anzahl},
+ylabel={Relativer Anteil},
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Quellen in wahren Nachrichten},
+title={Quellen wahre Nachricht},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot[ybar interval, fill=black, fill opacity=0.4, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	9\\
-0.5	41\\
-1.5	7\\
-2.5	6\\
-3.5	8\\
-4.5	5\\
-5.5	4\\
-6.5	4\\
-7.5	3\\
-8.5	0\\
-9.5	3\\
-10.5	1\\
-11.5	1\\
-12.5	0\\
-13.5	1\\
-14.5	1\\
-15.5	1\\
-16.5	3\\
-17.5	1\\
-18.5	1\\
-19.5	1\\
+0	0.61\\
+0.005	0.18\\
+0.01	0.1\\
+0.015	0.07\\
+0.02	0.01\\
+0.025	0.02\\
+0.03	0\\
+0.035	0\\
+0.04	0.01\\
+0.045	0.01\\
 };
 \addlegendentry{usedsources}
 
 \addplot[ybar interval, fill=black, fill opacity=0.3, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	15\\
-0.5	14\\
-1.5	15\\
-2.5	10\\
-3.5	12\\
-4.5	6\\
-5.5	6\\
-6.5	7\\
-7.5	5\\
-8.5	5\\
-9.5	3\\
-10.5	0\\
-11.5	0\\
-12.5	1\\
-13.5	0\\
-14.5	0\\
-15.5	0\\
-16.5	0\\
-17.5	1\\
-18.5	1\\
+0	0.35\\
+0.003	0.25\\
+0.006	0.18\\
+0.009	0.12\\
+0.012	0.04\\
+0.015	0.03\\
+0.018	0.02\\
+0.021	0\\
+0.024	0\\
+0.027	0\\
+0.03	0.01\\
+0.033	0.01\\
 };
 \addlegendentry{internsources}
 
 \addplot[ybar interval, fill=black, fill opacity=0.2, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	42\\
-0.5	18\\
-1.5	12\\
-2.5	13\\
-3.5	4\\
-4.5	1\\
-5.5	4\\
-6.5	1\\
-7.5	2\\
-8.5	0\\
-9.5	0\\
-10.5	0\\
-11.5	0\\
-12.5	0\\
-13.5	0\\
-14.5	0\\
-15.5	2\\
-16.5	1\\
-17.5	1\\
+0	0.61\\
+0.003	0.21\\
+0.006	0.11\\
+0.009	0.01\\
+0.012	0.01\\
+0.015	0.03\\
+0.018	0\\
+0.021	0.01\\
+0.024	0\\
+0.027	0.01\\
+0.03	0.01\\
 };
 \addlegendentry{externsources}
 
 \addplot[ybar interval, fill=black, fill opacity=0.1, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
--0.5	11\\
-0.5	52\\
-1.5	18\\
-2.5	7\\
-3.5	5\\
-4.5	2\\
-5.5	3\\
-6.5	1\\
-7.5	0\\
-8.5	0\\
-9.5	0\\
-10.5	0\\
-11.5	0\\
-12.5	0\\
-13.5	0\\
-14.5	0\\
-15.5	0\\
-16.5	0\\
-17.5	0\\
-18.5	0\\
-19.5	0\\
-20.5	0\\
-21.5	0\\
-22.5	0\\
-23.5	0\\
-24.5	0\\
-25.5	0\\
-26.5	0\\
-27.5	0\\
-28.5	0\\
-29.5	0\\
-30.5	0\\
-31.5	0\\
-32.5	0\\
-33.5	0\\
-34.5	1\\
-35.5	1\\
+0	0.8\\
+0.005	0.16\\
+0.01	0.02\\
+0.015	0.01\\
+0.02	0\\
+0.025	0\\
+0.03	0\\
+0.035	0\\
+0.04	0\\
+0.045	0\\
+0.05	0\\
+0.055	0\\
+0.06	0\\
+0.065	0\\
+0.07	0\\
+0.075	0.01\\
+0.08	0.01\\
 };
 \addlegendentry{usedimages}
 

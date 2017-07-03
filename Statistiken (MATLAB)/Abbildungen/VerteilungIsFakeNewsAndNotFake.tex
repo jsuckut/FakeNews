@@ -14,132 +14,40 @@ width=6.028in,
 height=4.754in,
 at={(1.011in,0.642in)},
 scale only axis,
-xmin=0,
-xmax=2500,
+xmin=-1,
+xmax=5,
 xlabel style={font=\color{white!15!black}},
-xlabel={Wortanzahl in einer Nachricht},
+xlabel={Autorenanzahl},
 ymin=0,
-ymax=0.15,
+ymax=0.7,
 ylabel style={font=\color{white!15!black}},
 ylabel={Relativer Anteil},
 axis background/.style={fill=white},
 title style={font=\bfseries},
-title={Wortanzahl in Fake und nicht Fake News},
+title={Autorenanzahl in Fake und wahre Nachricht},
 xmajorgrids,
 ymajorgrids,
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot[ybar interval, fill=mycolor1, fill opacity=0.6, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
-30	0.01\\
-62.9	0.02\\
-95.8	0.03\\
-128.7	0.07\\
-161.6	0.12\\
-194.5	0.15\\
-227.4	0.09\\
-260.3	0.08\\
-293.2	0.05\\
-326.1	0.06\\
-359	0.02\\
-391.9	0.02\\
-424.8	0.04\\
-457.7	0.02\\
-490.6	0.03\\
-523.5	0.02\\
-556.4	0.04\\
-589.3	0.01\\
-622.2	0\\
-655.1	0.01\\
-688	0.05\\
-720.9	0.01\\
-753.8	0.01\\
-786.7	0\\
-819.6	0.01\\
-852.5	0\\
-885.4	0\\
-918.3	0\\
-951.2	0\\
-984.1	0\\
-1017	0.01\\
-1049.9	0\\
-1082.8	0\\
-1115.7	0\\
-1148.6	0\\
-1181.5	0\\
-1214.4	0\\
-1247.3	0\\
-1280.2	0.01\\
-1313.1	0\\
-1346	0\\
-1378.9	0\\
-1411.8	0\\
-1444.7	0\\
-1477.6	0\\
-1510.5	0\\
-1543.4	0\\
-1576.3	0\\
-1609.2	0\\
-1642.1	0.01\\
-1675	0.01\\
+-0.5	0.61\\
+0.5	0.37\\
+1.5	0.02\\
+2.5	0.02\\
 };
 \addlegendentry{Fake News}
 
 \addplot[ybar interval, fill=mycolor2, fill opacity=0.6, draw=black, area legend] table[row sep=crcr] {%
 x	y\\
-40	0.02\\
-86.1	0.01\\
-132.2	0.01\\
-178.3	0.05\\
-224.4	0.03\\
-270.5	0.01\\
-316.6	0.05\\
-362.7	0.09\\
-408.8	0.06\\
-454.9	0.06\\
-501	0.03\\
-547.1	0.04\\
-593.2	0.02\\
-639.3	0.06\\
-685.4	0.03\\
-731.5	0.03\\
-777.6	0.06\\
-823.7	0.01\\
-869.8	0.05\\
-915.9	0.01\\
-962	0.04\\
-1008.1	0.01\\
-1054.2	0.04\\
-1100.3	0.01\\
-1146.4	0.01\\
-1192.5	0.02\\
-1238.6	0.02\\
-1284.7	0.02\\
-1330.8	0.01\\
-1376.9	0.02\\
-1423	0.01\\
-1469.1	0.02\\
-1515.2	0\\
-1561.3	0.01\\
-1607.4	0.01\\
-1653.5	0\\
-1699.6	0\\
-1745.7	0\\
-1791.8	0\\
-1837.9	0\\
-1884	0\\
-1930.1	0\\
-1976.2	0\\
-2022.3	0\\
-2068.4	0\\
-2114.5	0.01\\
-2160.6	0\\
-2206.7	0\\
-2252.8	0\\
-2298.9	0.01\\
-2345	0.01\\
+-0.5	0.12\\
+0.5	0.63\\
+1.5	0.2\\
+2.5	0.04\\
+3.5	0.01\\
+4.5	0.01\\
 };
-\addlegendentry{Keine Fake News}
+\addlegendentry{wahre Nachricht}
 
 \end{axis}
 \end{tikzpicture}%

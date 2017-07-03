@@ -4,7 +4,7 @@
 %  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
 %where you can also make suggestions and rate matlab2tikz.
 %
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}
 
 \begin{axis}[%
 width=6.028in,
@@ -12,13 +12,13 @@ height=4.754in,
 at={(1.011in,0.642in)},
 scale only axis,
 xmin=0.5,
-xmax=3.5,
-xtick={1,2,3},
-xticklabels={{Naive Bayes},{SVM},{Entscheidungsbaum}},
+xmax=4.5,
+xtick={1,2,3,4},
+xticklabels={{Logistic Regression},{Entscheidungsbaum},{Naive Bayes},{SVM}},
 xlabel style={font=\color{white!15!black}},
 xlabel={Modelle},
-ymin=0.6045,
-ymax=0.9455,
+ymin=0.5625,
+ymax=0.9475,
 ylabel style={font=\color{white!15!black}},
 ylabel={Trefferqueto},
 axis background/.style={fill=white},
@@ -29,138 +29,182 @@ ymajorgrids
 ]
 \addplot [color=black, dashed, forget plot]
   table[row sep=crcr]{%
-1	0.86\\
-1	0.93\\
+1	0.82\\
+1	0.91\\
 };
 \addplot [color=black, dashed, forget plot]
   table[row sep=crcr]{%
-2	0.85\\
-2	0.92\\
+2	0.83\\
+2	0.91\\
 };
 \addplot [color=black, dashed, forget plot]
   table[row sep=crcr]{%
-3	0.83\\
-3	0.91\\
+3	0.86\\
+3	0.93\\
 };
 \addplot [color=black, dashed, forget plot]
   table[row sep=crcr]{%
-1	0.74\\
-1	0.81\\
+4	0.85\\
+4	0.92\\
 };
 \addplot [color=black, dashed, forget plot]
   table[row sep=crcr]{%
-2	0.73\\
-2	0.8\\
+1	0.65\\
+1	0.75\\
 };
 \addplot [color=black, dashed, forget plot]
   table[row sep=crcr]{%
-3	0.69\\
-3	0.77\\
+2	0.69\\
+2	0.77\\
+};
+\addplot [color=black, dashed, forget plot]
+  table[row sep=crcr]{%
+3	0.74\\
+3	0.81\\
+};
+\addplot [color=black, dashed, forget plot]
+  table[row sep=crcr]{%
+4	0.73\\
+4	0.8\\
 };
 \addplot [color=black, forget plot]
   table[row sep=crcr]{%
-0.8875	0.93\\
-1.1125	0.93\\
+0.875	0.91\\
+1.125	0.91\\
 };
 \addplot [color=black, forget plot]
   table[row sep=crcr]{%
-1.8875	0.92\\
-2.1125	0.92\\
+1.875	0.91\\
+2.125	0.91\\
 };
 \addplot [color=black, forget plot]
   table[row sep=crcr]{%
-2.8875	0.91\\
-3.1125	0.91\\
+2.875	0.93\\
+3.125	0.93\\
 };
 \addplot [color=black, forget plot]
   table[row sep=crcr]{%
-0.8875	0.74\\
-1.1125	0.74\\
+3.875	0.92\\
+4.125	0.92\\
 };
 \addplot [color=black, forget plot]
   table[row sep=crcr]{%
-1.8875	0.73\\
-2.1125	0.73\\
+0.875	0.65\\
+1.125	0.65\\
 };
 \addplot [color=black, forget plot]
   table[row sep=crcr]{%
-2.8875	0.69\\
-3.1125	0.69\\
+1.875	0.69\\
+2.125	0.69\\
+};
+\addplot [color=black, forget plot]
+  table[row sep=crcr]{%
+2.875	0.74\\
+3.125	0.74\\
+};
+\addplot [color=black, forget plot]
+  table[row sep=crcr]{%
+3.875	0.73\\
+4.125	0.73\\
 };
 \addplot [color=blue, forget plot]
   table[row sep=crcr]{%
-0.775	0.81\\
-0.775	0.86\\
-1.225	0.86\\
-1.225	0.81\\
-0.775	0.81\\
+0.75	0.75\\
+0.75	0.82\\
+1.25	0.82\\
+1.25	0.75\\
+0.75	0.75\\
 };
 \addplot [color=blue, forget plot]
   table[row sep=crcr]{%
-1.775	0.8\\
-1.775	0.85\\
-2.225	0.85\\
-2.225	0.8\\
-1.775	0.8\\
+1.75	0.77\\
+1.75	0.83\\
+2.25	0.83\\
+2.25	0.77\\
+1.75	0.77\\
 };
 \addplot [color=blue, forget plot]
   table[row sep=crcr]{%
-2.775	0.77\\
-2.775	0.83\\
-3.225	0.83\\
-3.225	0.77\\
-2.775	0.77\\
+2.75	0.81\\
+2.75	0.86\\
+3.25	0.86\\
+3.25	0.81\\
+2.75	0.81\\
+};
+\addplot [color=blue, forget plot]
+  table[row sep=crcr]{%
+3.75	0.8\\
+3.75	0.85\\
+4.25	0.85\\
+4.25	0.8\\
+3.75	0.8\\
 };
 \addplot [color=red, forget plot]
   table[row sep=crcr]{%
-0.775	0.83\\
-1.225	0.83\\
+0.75	0.78\\
+1.25	0.78\\
 };
 \addplot [color=red, forget plot]
   table[row sep=crcr]{%
-1.775	0.82\\
-2.225	0.82\\
+1.75	0.8\\
+2.25	0.8\\
 };
 \addplot [color=red, forget plot]
   table[row sep=crcr]{%
-2.775	0.8\\
-3.225	0.8\\
+2.75	0.83\\
+3.25	0.83\\
+};
+\addplot [color=red, forget plot]
+  table[row sep=crcr]{%
+3.75	0.82\\
+4.25	0.82\\
 };
 \addplot [color=black, draw=none, mark=+, mark options={solid, red}, forget plot]
   table[row sep=crcr]{%
-1	0.72\\
+1	0.58\\
+1	0.61\\
+1	0.63\\
+1	0.63\\
+1	0.64\\
+1	0.64\\
+1	0.64\\
+1	0.64\\
 };
 \addplot [color=black, draw=none, mark=+, mark options={solid, red}, forget plot]
   table[row sep=crcr]{%
+2	0.62\\
+2	0.62\\
+2	0.63\\
+2	0.63\\
+2	0.64\\
+2	0.64\\
+2	0.64\\
+2	0.64\\
+2	0.64\\
+2	0.65\\
+2	0.65\\
+2	0.66\\
+2	0.66\\
+2	0.66\\
+2	0.66\\
+2	0.66\\
 2	0.67\\
-2	0.7\\
-2	0.71\\
-2	0.72\\
+2	0.67\\
+2	0.67\\
+2	0.68\\
+2	0.68\\
+2	0.68\\
 };
 \addplot [color=black, draw=none, mark=+, mark options={solid, red}, forget plot]
   table[row sep=crcr]{%
-3	0.62\\
-3	0.62\\
-3	0.63\\
-3	0.63\\
-3	0.64\\
-3	0.64\\
-3	0.64\\
-3	0.64\\
-3	0.64\\
-3	0.65\\
-3	0.65\\
-3	0.66\\
-3	0.66\\
-3	0.66\\
-3	0.66\\
-3	0.66\\
-3	0.67\\
-3	0.67\\
-3	0.67\\
-3	0.68\\
-3	0.68\\
-3	0.68\\
+3	0.72\\
+};
+\addplot [color=black, draw=none, mark=+, mark options={solid, red}, forget plot]
+  table[row sep=crcr]{%
+4	0.67\\
+4	0.7\\
+4	0.71\\
+4	0.72\\
 };
 \end{axis}
 \end{tikzpicture}%
