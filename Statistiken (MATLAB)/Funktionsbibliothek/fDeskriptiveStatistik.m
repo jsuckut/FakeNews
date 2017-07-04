@@ -55,16 +55,8 @@ mDeskriptiveStatistik(7,:) = max(mDaten) - min(mDaten);
 % Interquartile-Range
 mDeskriptiveStatistik(8,:) = quantile(mDaten,0.75) - quantile(mDaten,0.25);
 mDeskriptiveStatistik(9,:) = length(mDaten);
-
-%format short g % Festlegung der Geunauigkeit
-mDeskriptiveStatistik = single(mDeskriptiveStatistik);
-
-
 % Leeres Cell-Array fuer Zeilenbeschriftungen generieren
 cLabel = cell(8,1);
-
-% Runden der Werte auf vier Nachkommastellen
-% mDeskriptiveStatistik = round(mDeskriptiveStatistik.*1000)/1000; 
 
 % Zeilenbeschriftungen
 cLabel{1,1} = 'Mittelwert';
@@ -80,4 +72,5 @@ cLabel{9,1} = 'Anzahl Beobachtungen';
 % Beschriftete Tabelle erstellen
 cDeskriptiveStatistik = ...
     [[{'Kennzahl'};cLabel], [cVarNamen; num2cell(mDeskriptiveStatistik)]];
+
 end

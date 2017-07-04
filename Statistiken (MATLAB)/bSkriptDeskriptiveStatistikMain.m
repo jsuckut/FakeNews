@@ -125,45 +125,37 @@ vSourceIsNotFake = mDataIsNotFake(:,21:24);
 % 'FaceAlpha', 0.9, 'FaceColor',[0 0 0]); Farbe und Durchsichtigkeit 
 figure;
 subplot(2,1,1);
-h1 = histogram(vSourceIsFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+histogram(vSourceIsFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
 hold on;
-h2 = histogram(vSourceIsFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
+histogram(vSourceIsFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
 hold on; 
-h3 = histogram(vSourceIsFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
+histogram(vSourceIsFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
 hold on;
-h4 = histogram(vSourceIsFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
-h1.Normalization = 'probability'; % Normierung auf Prozent
-h2.Normalization = 'probability'; 
-h3.Normalization = 'probability'; 
-h4.Normalization = 'probability'; 
-ylim([0 1]);                      % Skalieren
-xlim([-1 45]);
-title('Quellen in Fake News');
+histogram(vSourceIsFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]); 
+ylim([0 100]);                      % Skalieren
+xlim([0 0.08]);
+title('Quellen Quotient in Fake News');
 legend('usedsources','internsources','externsources','usedimages');
-xlabel('Anzahl der jeweiligen Quellen');
-ylabel('Relativer Anteil');
+xlabel('Quellen Quotient');
+ylabel('Anteil');
 grid on;
 
 subplot(2,1,2);
-h1=histogram(vSourceIsNotFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
+histogram(vSourceIsNotFake(:,1),'FaceAlpha', 0.4, 'FaceColor',[0 0 0]);
 hold on;
-h2=histogram(vSourceIsNotFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
+histogram(vSourceIsNotFake(:,2),'FaceAlpha', 0.3, 'FaceColor',[0 0 0]);
 hold on; 
-h3=histogram(vSourceIsNotFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
+histogram(vSourceIsNotFake(:,3),'FaceAlpha', 0.2, 'FaceColor',[0 0 0]);
 hold on;
-h4=histogram(vSourceIsNotFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
-h1.Normalization = 'probability'; % Normierung auf Prozent
-h2.Normalization = 'probability'; 
-h3.Normalization = 'probability'; 
-h4.Normalization = 'probability'; 
-ylim([0 1]);                      % Skalieren
-xlim([-1 45]);
-title('Quellen wahre Nachricht');
+histogram(vSourceIsNotFake(:,4),'FaceAlpha', 0.1, 'FaceColor',[0 0 0]);
+ylim([0 100]);                      % Skalieren
+xlim([0 0.08]);
+title('Quellen Quotient wahre Nachricht');
 legend('usedsources','internsources','externsources','usedimages');
-xlabel('Anzahl der jeweiligen Quellen');
-ylabel('Relativer Anteil');
+xlabel('Quellen Quotient');
+ylabel('Anteil');
 grid on;
-matlab2tikz('Abbildungen/VerteilungVonQuellen.tex');
+matlab2tikz('Abbildungen/VerteilungAbsolutQuellen.tex');
 % print -dpdf Abbildung/Wortverteilung.pdf;
 
 %% Boxplot Verteilung
