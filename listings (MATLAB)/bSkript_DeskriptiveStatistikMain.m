@@ -158,6 +158,50 @@ grid on;
 matlab2tikz('Abbildungen/VerteilungAbsolutQuellen.tex');
 % print -dpdf Abbildung/Wortverteilung.pdf;
 
+
+%% VerteilungDerWoerter
+% Sortierung der Datenfehler gem. Bedingungen bzgl. der Eigenschaften
+vSourceIsFake = mDataIsFake(:,21:24);
+vSourceIsNotFake = mDataIsNotFake(:,21:24);
+
+%% Fuer die PPT
+% 'FaceAlpha', 0.9, 'FaceColor',[0 0 0]); Farbe und Durchsichtigkeit 
+figure;
+subplot(2,1,1);
+histogram(vSourceIsFake(:,1),'FaceAlpha', 0.8, 'FaceColor',[1 0 0]);
+hold on;
+histogram(vSourceIsFake(:,2),'FaceAlpha', 0.8, 'FaceColor',[0 1 1]);
+hold on; 
+histogram(vSourceIsFake(:,3),'FaceAlpha', 0.8, 'FaceColor',[0 0 1]);
+hold on;
+histogram(vSourceIsFake(:,4),'FaceAlpha', 0.8, 'FaceColor',[1 1 1]); 
+ylim([0 100]);                      % Skalieren
+xlim([0 0.08]);
+title('Anteile der verwendeten Verlinkungen in Fake News');
+legend('usedsources','internsources','externsources','usedimages');
+xlabel('Anteil der verwendeten Verlinkung');
+ylabel('Anzahl der Nachrichtenartikel');
+grid on;
+
+subplot(2,1,2);
+histogram(vSourceIsNotFake(:,1),'FaceAlpha', 0.8, 'FaceColor',[1 0 0]);
+hold on;
+histogram(vSourceIsNotFake(:,2),'FaceAlpha', 0.8, 'FaceColor',[0 1 1]);
+hold on;
+histogram(vSourceIsNotFake(:,3),'FaceAlpha', 0.8, 'FaceColor',[0 0 1]);
+hold on;
+histogram(vSourceIsNotFake(:,4),'FaceAlpha', 0.8, 'FaceColor',[1 1 1]);
+ylim([0 100]);                      % Skalieren
+xlim([0 0.08]);
+title('Anteile der verwendeten Verlinkungen in wahren Nachrichten');
+legend('usedsources','internsources','externsources','usedimages');
+xlabel('Anteil der verwendeten Verlinkung');
+ylabel('Anzahl der Nachrichtenartikel');
+grid on;
+matlab2tikz('Abbildungen/VerteilungAbsolutQuellen.tex');
+%print -dpdf Abbildung/VerteilungAbsolutQuellen.pdf;
+
+
 %% Boxplot Verteilung
 figure
 
