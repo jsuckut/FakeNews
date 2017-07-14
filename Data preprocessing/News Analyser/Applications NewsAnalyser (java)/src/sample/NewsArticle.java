@@ -26,22 +26,26 @@ public class NewsArticle {
 
     public static void main(String[] args) throws Exception {
         getConnection();
-       // generateNewsArticles(18);
-
     }
-    public String title;
-    public String content;
-    public java.sql.Date date;
-    public int usedSources;
-    public int internSources;
-    public int externSources;
-    public int usedImages;
-    public String url;
-    public ArrayList<String> author = new ArrayList<String>();
+    private String title;
+    private String content;
+    private java.sql.Date date;
+    private int usedSources;
+    private int internSources;
+    private int externSources;
+    private int usedImages;
+    private String url;
+    private ArrayList<String> author = new ArrayList<String>();
     public int numberOfAuthors;
-    public boolean isFake;
+    private boolean isFake;
 
-    //Daten zur SQL-Verbindung und die Funktion um eine Verbindung zur SQL-Datenbank aufzubauen
+    /**
+     * This method creates a connection to the database where the data is stored.
+     *
+     * @return null
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-18
+     */
     public static Connection getConnection() throws Exception{
         try{
             String driver = "com.mysql.jdbc.Driver";
@@ -58,7 +62,13 @@ public class NewsArticle {
         return null;
     }
 
-    //Constructor, welcher aus der NewsID ein Newsarticle-Objekt erstellt.
+    /**
+     * This method is a constructor of NewsArticle that uses getConnection() to create the object.
+     *
+     * @return NewsArticle
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-18
+     */
     public NewsArticle(int newsID) throws Exception{
         Connection con = getConnection();
         PreparedStatement newsStatement = con.prepareStatement("SELECT * FROM newsarticles WHERE newsID=" + newsID);
@@ -97,7 +107,13 @@ public class NewsArticle {
 
     }
 
-//Diese Funktion lässt eine bestimmte Anzahl von NewsArtikel erstellt werden.
+    /**
+     * This method creates an array containing all the NewsArticle objects of the database.
+     *
+     * @return NewsArticle[]
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-18
+     */
     public static NewsArticle[] generateNewsArticles(int amount) throws Exception{
         Connection con = getConnection();
         PreparedStatement statement = con.prepareStatement("SELECT * FROM newsarticles");
@@ -113,7 +129,9 @@ public class NewsArticle {
         return newsArticles;
     }
 
-//Getter für die Attribute, sind glaub ich nicht wirklich notwendig, da man einfach direkt auf die Attribute zugreifen kann.
+    /**
+     * Several methods for getting the variables.
+     */
     public String getTitle() {
         return title;
     }

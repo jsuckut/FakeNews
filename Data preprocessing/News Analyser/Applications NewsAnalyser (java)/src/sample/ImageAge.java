@@ -9,6 +9,7 @@ import java.net.URL;
 
 /**
  * Created by Hendrik Jöntgen on 30.05.2017.
+ * As described in the documentation this class in not used.
  */
 public class ImageAge {
 
@@ -32,14 +33,7 @@ String imageURL = image.attr("src");
 if (imageURL.contains("png")||imageURL.contains("jpg")){
                 System.out.println(image.attr("src").toString());
             }
-
-
-
-
         }
-
-
         return null;
     }
-
 }

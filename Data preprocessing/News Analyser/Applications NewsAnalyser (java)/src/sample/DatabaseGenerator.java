@@ -11,22 +11,19 @@ import edu.stanford.nlp.sentiment.SentimentCoreAnnotations.*;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.CoreMap;
 import edu.stanford.nlp.util.PropertiesUtils;
-import javax.lang.model.util.Elements;
+
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.*;
-import java.sql.DriverManager;
-import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by Hendrik Jöntgen on 18.05.2017.
+ * last updated by Jörg Suckut on 02.07.2017.
  * In dieser Klasse wird die Datenbank für den Klassifizierer gebaut.
  * Dabei werden sämtliche NewsArticle aus der Ursprungsdatenbank geladen und unserer Parameterfunktionen auf diese ausgeführt
  * Anschließend werden die Ergebnisse unserer Parameterfunktionen in eine neue Datenbank geschrieben.
@@ -45,43 +42,23 @@ public class DatabaseGenerator {
 
     public static void main(String[] args){
         try {
-            //createDatabase();
-            updateDatabase();
+            createDatabase();
+            //updateDatabase();
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public static void updateDatabase() throws Exception {
-        Connection sqlConnection = NewsArticle.getConnection();
-
-        PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
-        ResultSet resultSet = getAllIdsStatement.executeQuery();
-
-        while (resultSet.next()) {
-            NewsArticle news = new NewsArticle(resultSet.getInt("newsID"));
-
-            int words = getCountOfWords(news);
-
-            double usedsourcesPerWords = (double) news.getUsedSources() / (double) words;
-            double internsourcesPerWords = (double) news.getInternSources() / (double) words;
-            double externsourcesPerWords = (double) news.getExternSources() / (double) words;
-            double usedimgagesPerWords = (double) news.getUsedImages() / (double) words;
-
-
-            Connection updateConnection = NewsArticle.getConnection();
-            //Die eben berechnene Parameter werden hier in die neue Tabelle eingefügt. Muss bei weiteren Parametern entsprechend erweitert werden.
-            PreparedStatement insertStatement = updateConnection.prepareStatement("UPDATE newsResults SET usedsourcesPerWords = " + usedsourcesPerWords + ", internsourcesPerWords = " + internsourcesPerWords + ", externsourcesPerWords = " + externsourcesPerWords + ", usedimagesPerWords = " + usedimgagesPerWords + "  WHERE newsId = " + resultSet.getInt("newsId") + ";");
-            insertStatement.executeUpdate();
-
-            insertStatement.close();
-            updateConnection.close();
-        }
-    }
-
+    /**
+     * This method creates the desired database with all the necessary fields by iterating over the original data and using the methods below.
+     *
+     * @return void
+     * @author: Hendrik Jöntgen & Jörg Suckut
+     * @update: 2017-06-25
+     */
     public static void createDatabase() throws Exception {
-//SQL-Connection wird hergestellt
+        //SQL-Connection wird hergestellt
         Connection sqlConnection = NewsArticle.getConnection();
         //Die aktuelle Resultdatenbank wird gelöscht, sodass eine neue erstellt werden kann.
         PreparedStatement DropStatement = sqlConnection.prepareStatement("DROP TABLE IF EXISTS newsResults");
@@ -92,11 +69,11 @@ public class DatabaseGenerator {
         //Alle News-Einträge der Datenbank ausgeben lassen
         PreparedStatement getAllIdsStatement = sqlConnection.prepareStatement("SELECT * FROM newsarticles");
         ResultSet resultSet = getAllIdsStatement.executeQuery();
-//In dieser Schleife werden alle NewsArticle nacheinander aufgerufen und unsere Parameter für sie berechnet.
+        //In dieser Schleife werden alle NewsArticle nacheinander aufgerufen und unsere Parameter für sie berechnet.
         while (resultSet.next()) {
 
             NewsArticle news = new NewsArticle(resultSet.getInt("newsID"));
-            boolean isFake = news.isFake;
+            boolean isFake = news.isFake();
             int words = getCountOfWords(news);
             double uppercases = getNumberOfUpperCase(news);
             double questions = getNumberOfQuestionMark(news);
@@ -106,7 +83,7 @@ public class DatabaseGenerator {
             double thirdPersonOccurences = getPersonDistribution(news, thirdPersonPattern)+getPersonDistribution(news, exclusivethirdPluralPersonPattern);
             double averageSentenceLength = getAverageSentenceLength(news);
             double repetitiveness = getRepetitiveness(news);
-            int authorHits = getGoogleHits(news);
+            int authorHits = getBingHits(news);
             int authors = news.numberOfAuthors;
             double citations = getNumberOfCitations(news);
             double titleUppercase = isTitleUppercase(news);
@@ -146,11 +123,7 @@ public class DatabaseGenerator {
             insertStatement.close();
             updateConnection.close();
         }
-
-
-
     }
-
 
     /**
      * This method count the number of words in a given string.
@@ -159,7 +132,7 @@ public class DatabaseGenerator {
      * @param news
      * @return The number of sStrinkTokenizer.countTokens
      * @author: Benjamin M. Abdel-Karim
-     * @update: 2017-07-12
+     * @update: 2017-05-12
      */
     public static int getCountOfWords(NewsArticle news) {
         String sText = news.getContent();
@@ -245,6 +218,7 @@ public class DatabaseGenerator {
     /**
      * This method count the usage of a given person in a given NewsArticle.
      *
+     * @param news, person
      * @return The number of occurences of a person
      * @author: Hendrik Joentgen
      * @update: 2017-05-20
@@ -259,6 +233,14 @@ public class DatabaseGenerator {
 
     }
 
+    /**
+     * This method counts the number of sentences countained in a text by using the StanfordCoreNLP library.
+     *
+     * @param news
+     * @return The number of sentences
+     * @author: Jörg Suckut
+     * @update: 2017-06-25
+     */
     public static double countSentences(NewsArticle news){
         StanfordCoreNLP pipeline = new StanfordCoreNLP(PropertiesUtils.asProperties(
                 "annotators", "tokenize, ssplit, parse",
@@ -273,11 +255,26 @@ public class DatabaseGenerator {
         return (double) sentences.size();
     }
 
-
+    /**
+     * This method calculates the average lenght of a sentence.
+     *
+     * @param news
+     * @return The number of sentences
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-12
+     */
     public static double getAverageSentenceLength(NewsArticle news) {
        return (double) getCountOfWords(news) / countSentences(news);
     }
 
+    /**
+     * This method counts the number of unique words in a text.
+     *
+     * @param news
+     * @return The number of unique words
+     * @author: Benjamin M. Abdel-Karim
+     * @update: 2017-05-13
+     */
     public static double getRepetitiveness(NewsArticle news){
         Set<String> uniqueWords = new HashSet<String>();
         String[] words = news.getContent().split(" ");
@@ -287,13 +284,20 @@ public class DatabaseGenerator {
         return (double)uniqueWords.size()/getCountOfWords(news);
     }
 
-    public static int getGoogleHits(NewsArticle news) throws IOException, URISyntaxException {
+    /** This method determines the number of Bing search hits an of a given NewsArticle has.
+     *
+     * @param news
+     * @return The number Bing hits
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-25
+     */
+    public static int getBingHits(NewsArticle news) throws IOException, URISyntaxException {
 
         String GOOGLE_SEARCH_URL = "https://www.bing.com/search";
         String newsSite = news.getUrl().split("/")[2];
 
         int hitNumber = 0;
-        for (String author : news.author) {
+        for (String author : news.getAuthor()) {
 
             String searchURL = GOOGLE_SEARCH_URL + "?q=\"" + author.replace(" ", "+") + "\"+" + newsSite;
             org.jsoup.nodes.Document doc = Jsoup.connect(searchURL).userAgent("Chrome/41.0.2228.0").get();
@@ -318,8 +322,8 @@ public class DatabaseGenerator {
             } else {
 
             }
-            if (!news.author.isEmpty()) {
-                return hitNumber / news.author.size();
+            if (!news.getAuthor().isEmpty()) {
+                return hitNumber / news.getAuthor().size();
             } else {
                 return 0;
             }
@@ -327,6 +331,14 @@ public class DatabaseGenerator {
         return hitNumber;
     }
 
+    /**
+     * This returns a ratio of the number of uppercase letters in a title divided by the number of characters.
+     *
+     * @param news
+     * @return The portion of uppercase letters in a title
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-25
+     */
     public static double isTitleUppercase(NewsArticle news){
         String title = news.getTitle();
 
@@ -339,6 +351,14 @@ public class DatabaseGenerator {
         return (double) iUpperCase / (double) title.length();
     }
 
+    /**
+     * This method determines the ratio of spelling errors in a text divided by the number of words.
+     *
+     * @param news
+     * @return The portion of spelling errors in a text
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-31
+     */
     public static double errorLevel(NewsArticle news) throws IOException {
         return (double)LanguageChecker.getSpellingError(news.getContent())/getCountOfWords(news);
     }
@@ -412,12 +432,19 @@ public class DatabaseGenerator {
                 {
                     informationCount++;
                 }
-                //System.out.println(triple.confidence + "\t" + triple.subjectLemmaGloss() + "\t" + triple.relationLemmaGloss() + "\t" + triple.objectLemmaGloss());
             }
         }
         return informationCount;
     }
 
+    /**
+     * This method returns a HashMap containing the Part-Of-Speech-Tags in a text with their respective frequencies.
+     *
+     * @param news
+     * @return HashMap with POS-Tags as keys and their frequencies as values.
+     * @author: Jörg Suckut
+     * @update: 2017-06-25
+     */
     public static HashMap<String, Integer> getPosTags(NewsArticle news) {
         // Create the Stanford CoreNLP pipeline
         StanfordCoreNLP pipeline = new StanfordCoreNLP(PropertiesUtils.asProperties(

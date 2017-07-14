@@ -12,12 +12,14 @@ import java.util.List;
  */
 public class LanguageChecker {
 
-
-    public static void main(String[] args) throws IOException {
-
-getSpellingError("tost are very tasty. i lik to eat them very musch. does this tool check for proper writing? And if i use the wronged grammars?");
-    }
-
+    /**
+     * This method counts the number of spelling errors in a text using the JLanguageTool library.
+     *
+     * @param sentence
+     * @return The number of spelling errors in a text
+     * @author: Hendrik Joentgen
+     * @update: 2017-05-31
+     */
     public static int getSpellingError(String sentence) throws IOException {
         JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
         for (Rule rule : langTool.getAllRules()) {
@@ -26,7 +28,7 @@ getSpellingError("tost are very tasty. i lik to eat them very musch. does this t
             }
         }
         List<RuleMatch> matches = langTool.check(sentence);
-        System.out.println("Es wurden " + matches.size() + " Fehler gefunden.");
+        //System.out.println("Es wurden " + matches.size() + " Fehler gefunden.");
         return matches.size();
     }
 }
