@@ -49,9 +49,9 @@ public class NewsArticle {
     public static Connection getConnection() throws Exception{
         try{
             String driver = "com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://hung3r.lima-db.de:3306/db_295068_1?zeroDateTimeBehavior=convertToNull";
-            String username = "USER295068";
-            String password = "pai7ar2vi7ieGia";
+            String url = "";
+            String username = "";
+            String password = "";
             Class.forName(driver);
 
             Connection conn = DriverManager.getConnection(url,username,password);
